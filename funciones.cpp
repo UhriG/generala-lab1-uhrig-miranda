@@ -91,16 +91,12 @@ void juegoMain(int vec[],int tam){
             cin >> cantDados;
             switch(cantDados){
                 case 1: cambiarDados(vec, 1);
-                        mostrarDados(vec, tam);
                     break;
                 case 2: cambiarDados(vec, 2);
-                        mostrarDados(vec, tam);
                     break;
                 case 3: cambiarDados(vec, 3);
-                        mostrarDados(vec, tam);
                     break;
                 case 4: cambiarDados(vec, 4);
-                        mostrarDados(vec, tam);
                     break;
                 case 5: cargarDados(vec, tam);
                     break;
