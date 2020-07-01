@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1593638247 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+	<locale.h>
+	<windows.h>
+	"funciones.h"
+
+1593637705 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\funciones.h
+
+1593638413 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\main.cpp
+	<iostream>
+	<windows.h>
+	<stdio.h>
+	<wchar.h>
+	<locale.h>
+	"funciones.h"
+
