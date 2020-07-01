@@ -76,7 +76,7 @@ void juegoMain(int vec[],int tam){
     bool menu = false;
     char conf, nombre[20];
     cout << "INGRESE SU NOMBRE: ";
-    //cin.getline(nombre, 20);
+    //cin.getline(nombre, 20);//
     cin >> nombre;
     while(!menu){
         system("cls");

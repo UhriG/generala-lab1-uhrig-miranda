@@ -18,3 +18,22 @@
 	<locale.h>
 	"funciones.h"
 
+1593640430 source:c:\users\maxi\documents\github\generala-lab1\main.cpp
+	<iostream>
+	<windows.h>
+	<stdio.h>
+	<wchar.h>
+	<locale.h>
+	"funciones.h"
+
+1593640056 c:\users\maxi\documents\github\generala-lab1\funciones.h
+
+1593641278 source:c:\users\maxi\documents\github\generala-lab1\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+	<locale.h>
+	<windows.h>
+	"funciones.h"
+
