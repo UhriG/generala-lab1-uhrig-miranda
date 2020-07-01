@@ -143,7 +143,7 @@ void cambiarDados(int vec[],int i){
         tirarDados(vec, i, pos-1);
     }
 }
-int buscarGenerala(int v[], int tam, int numero){
+int buscarDadosrepetidos(int v[], int tam, int numero){
     int i, cant=0;
     for(i=0;i<tam;i++){
         if(v[i]==numero) cant++;
