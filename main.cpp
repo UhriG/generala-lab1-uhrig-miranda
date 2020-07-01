@@ -57,7 +57,5 @@ int main()
 
     }
 
-    /*comentario wasdwasd*/
-
     return 0;
 }
