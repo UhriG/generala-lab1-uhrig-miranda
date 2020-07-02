@@ -108,14 +108,11 @@ void juegoMain(int vec[],int tam){
                     }
                 }else{
                     menu = true;
-                    lanzamiento = 2; //termina ciclo
-                    system("cls");
-                     mostrarDados(vec, tam);
-                     system("pause");
+                    lanzamiento = 2; //termina ciclo;
                 }
+                cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
+                system("pause");
             }
-             cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
-             system("pause");
         }
         menu = false;
 }
@@ -212,8 +209,9 @@ int calcularPuntaje(int v[], int tam){
 
 void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento, char nombre[]){
     system("cls");
-    cout << "\t\tTURNO DE " <<nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
+    cout << "\t\tTURNO DE " << nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
     cout << "---------------------------------------------------------------------------------" << endl;
-    cout << "--------------------- LANZAMIENTO N°: "<< lanzamiento << " -----------------------------------------" << endl << endl;
+    cout << "--------------------- LANZAMIENTO N°: "<< lanzamiento+1 << " -----------------------------------------" << endl << endl;
     mostrarDados(vec, tam);
+    cout << endl;
 }
