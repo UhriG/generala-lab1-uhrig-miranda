@@ -70,22 +70,22 @@ void subMenuPuntaje(int vec[], int tam){
     DEFINICION DE LAS FUNCIONES PARA EL JUEGO
 */
 
-/*void juegoMain(int vec[],int tam){
+void juegoMain(int vec[],int tam){
 
     int cantDados, nRonda=0, puntaje=0, i, cont=0;
     bool menu = false, ciclo=false;
     char conf='S', nombre[20];
+    int lanzamiento; //prueba de ciclos
     cout << "INGRESE SU NOMBRE: ";
     //cin.getline(nombre, 20);
     cin >> nombre;
     for(i=0;i<10;i++){
         cargarDados(vec, tam);
         nRonda = i+1;
-        while(!menu){
-            system("cls");
-            cout << "\t\tTURNO DE " <<nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
-            cout << "---------------------------------------------------------------------------------" << endl << endl;
-            mostrarDados(vec, tam);
+        lanzamiento = 0; //prueba ciclos
+        while(lanzamiento<2){
+            lanzamiento++;
+            cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
             cout << endl << endl;
             cout << "¿CONTINUAR LANZANDO? (S/N): ";
             cin >> conf;
@@ -105,16 +105,20 @@ void subMenuPuntaje(int vec[], int tam){
                         break;
                     default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
                             system("pause");
-
-                }
+                    }
                 }else{
                     menu = true;
+                    lanzamiento = 2; //termina ciclo
+                    system("cls");
+                     mostrarDados(vec, tam);
+                     system("pause");
                 }
-            system("cls");
+            }
+             cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
+             system("pause");
         }
         menu = false;
-    }
-}*/
+}
 
 void cargarDados(int vec[],int tam){
 
@@ -204,56 +208,6 @@ int calcularPuntaje(int v[], int tam){
     }
 
     return puntos;
-}
-
-void juegoMain(int vec[],int tam){
-
-    int cantDados, nRonda=0, puntaje=0, i, cont=0;
-    bool menu = false, ciclo=false;
-    char conf='S', nombre[20];
-    int lanzamiento; //prueba de ciclos
-    cout << "INGRESE SU NOMBRE: ";
-    //cin.getline(nombre, 20);
-    cin >> nombre;
-    for(i=0;i<10;i++){
-        cargarDados(vec, tam);
-        nRonda = i+1;
-        lanzamiento = 0; //prueba ciclos
-        while(lanzamiento<2){
-            lanzamiento++;
-            cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
-            cout << endl << endl;
-            cout << "¿CONTINUAR LANZANDO? (S/N): ";
-            cin >> conf;
-            if(conf=='S' || conf == 's'){
-                cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-                cin >> cantDados;
-                switch(cantDados){
-                    case 1: cambiarDados(vec, 1);
-                        break;
-                    case 2: cambiarDados(vec, 2);
-                        break;
-                    case 3: cambiarDados(vec, 3);
-                        break;
-                    case 4: cambiarDados(vec, 4);
-                        break;
-                    case 5: cargarDados(vec, tam);
-                        break;
-                    default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                            system("pause");
-                    }
-                }else{
-                    menu = true;
-                    lanzamiento = 2; //termina ciclo
-                    system("cls");
-                     mostrarDados(vec, tam);
-                     system("pause");
-                }
-            }
-             cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
-             system("pause");
-        }
-        menu = false;
 }
 
 void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento, char nombre[]){
