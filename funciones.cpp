@@ -72,42 +72,47 @@ void subMenuPuntaje(int vec[], int tam){
 
 void juegoMain(int vec[],int tam){
 
-    int cantDados, nRonda=0, puntaje=0;
-    bool menu = false;
-    char conf, nombre[20];
+    int cantDados, nRonda=0, puntaje=0, i, cont=0;
+    bool menu = false, ciclo=false;
+    char conf='S', nombre[20];
     cout << "INGRESE SU NOMBRE: ";
     //cin.getline(nombre, 20);
     cin >> nombre;
-    while(!menu){
-        system("cls");
-        cout << "\t\tTURNO DE " <<nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
-        cout << "---------------------------------------------------------------------------------" << endl << endl;
-        mostrarDados(vec, tam);
-        cout << endl << endl;
-        cout << "¿CONTINUAR LANZANDO? (S/N): ";
-        cin >> conf;
-        if(conf=='S' || conf == 's'){
-            cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-            cin >> cantDados;
-            switch(cantDados){
-                case 1: cambiarDados(vec, 1);
-                    break;
-                case 2: cambiarDados(vec, 2);
-                    break;
-                case 3: cambiarDados(vec, 3);
-                    break;
-                case 4: cambiarDados(vec, 4);
-                    break;
-                case 5: cargarDados(vec, tam);
-                    break;
-                default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                        system("pause");
+    for(i=0;i<10;i++){
+        cargarDados(vec, tam);
+        nRonda = i+1;
+        while(!menu){
+            system("cls");
+            cout << "\t\tTURNO DE " <<nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
+            cout << "---------------------------------------------------------------------------------" << endl << endl;
+            mostrarDados(vec, tam);
+            cout << endl << endl;
+            cout << "¿CONTINUAR LANZANDO? (S/N): ";
+            cin >> conf;
+            if(conf=='S' || conf == 's'){
+                cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
+                cin >> cantDados;
+                switch(cantDados){
+                    case 1: cambiarDados(vec, 1);
+                        break;
+                    case 2: cambiarDados(vec, 2);
+                        break;
+                    case 3: cambiarDados(vec, 3);
+                        break;
+                    case 4: cambiarDados(vec, 4);
+                        break;
+                    case 5: cargarDados(vec, tam);
+                        break;
+                    default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
+                            system("pause");
 
-            }
-        }else{
-            menu = true;
+                }
+                }else{
+                    menu = true;
+                }
+            system("cls");
         }
-        system("cls");
+        menu = false;
     }
 }
 
