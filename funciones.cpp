@@ -143,10 +143,59 @@ void cambiarDados(int vec[],int i){
         tirarDados(vec, i, pos-1);
     }
 }
-int buscarDadosrepetidos(int v[], int tam, int numero){
+int buscarDadosRepetidos(int v[], int tam, int numero){
     int i, cant=0;
     for(i=0;i<tam;i++){
         if(v[i]==numero) cant++;
         }
     return cant;
+}
+
+int calcularPuntaje(int v[], int tam){
+    int i, cant, puntos;
+    for(i=0;i<tam; i++){
+        cant = buscarDadosRepetidos(v, tam, i+1);
+        if(cant==5){
+            int puntos = 50; //Generala
+        }
+        if(cant==4){
+            puntos = 40; //Poker
+        }
+    }
+
+    int uno = buscarDadosRepetidos(v, tam, 1)*1;
+    int dos = buscarDadosRepetidos(v, tam, 2)*2;
+    int tres = buscarDadosRepetidos(v, tam, 2)*3;
+    int cuatro = buscarDadosRepetidos(v, tam, 2)*4;
+    int cinco = buscarDadosRepetidos(v, tam, 2)*5;
+    int seis = buscarDadosRepetidos(v, tam, 2)*6;
+
+    if (seis>uno && seis>dos && seis>tres && seis>cuatro && seis>cinco){
+        puntos=seis;
+    }
+    else{
+        if (cinco>uno && cinco>dos && cinco>tres && cinco>cuatro){
+            puntos=cinco;
+        }
+        else{
+            if (cuatro>uno && cuatro>dos && cuatro>tres){
+                puntos=cuatro;
+            }
+            else{
+                if (tres>uno && tres>dos){
+                    puntos=tres;
+                }
+                else{
+                    if(dos>uno){
+                        puntos=dos;
+                    }
+                    else{
+                        puntos=uno;
+                    }
+                }
+            }
+        }
+    }
+
+    return puntos;
 }
