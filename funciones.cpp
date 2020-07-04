@@ -66,19 +66,109 @@ void subMenuPuntaje(int vec[], int tam){
     }
 }
 
+void subMenuReglamento(){
+    bool menu = false;
+    int opc;
+    system("cls");
+    while(!menu){
+        system("cls");
+        cout << "\t\t\t\tREGLAMENTO Y COMBINACIONES GANADORAS" << endl;
+        cout << "1. Reglamento " << endl;
+        cout << "2. Combinaciones ganadoras " << endl;
+        cout << "3. Volver " << endl << endl;
+        cout << "Ingrese la opción deseada: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1: reglas();
+                break;
+            case 2: combinacionesGanadoras();
+                break;
+            case 3: menu = true;
+                break;
+            default: cout << "Ingrese una opción válida (1-3)";
+                     system("pause");
+        }
+    }
+}
+
+void reglas(){
+    system("cls");
+    cout << endl << "\t\t\t\t\tREGLAMENTO DEL JUEGO" << endl << endl << endl;
+
+    cout << "\tEl objetivo del juego es sacar Generala Servida, u obtener la puntuación más alta" << endl;
+    cout << "\tde un conjunto de rondas establecidas. " << endl << endl;
+
+    cout << "\tUna ronda puede estar compuesta por hasta tres lanzamientos por jugador." << endl;
+    cout << "\tUn lanzamiento consiste en tirar los cinco dados y evaluar sus valores para determinar el puntaje." << endl;
+    cout << "\tEn caso que el jugador lo considere puede volver a tirar todos a algunos de los dados en dos oportunidades más." << endl;
+    cout << "\tEl sistema preguntará si quiere volver a lanzar,  y si la respuesta es sí," << endl;
+    cout << "\tpreguntará cuáles son los dados que quiere elegir para volver a tirar. " << endl << endl;
+
+    cout << "\tEl puntaje de un lanzamiento está determinado por una serie de reglas que figuran" << endl;
+    cout << "\ten la sección Combinaciones ganadoras." << endl << endl;
+
+    cout << "\tEl puntaje obtenido se suma al puntaje anterior del jugador. Si un jugador saca" << endl;
+    cout << "\tGenerala en el primer tiro gana la partida." << endl << endl << endl << endl;
+    system("pause");
+}
+
+void combinacionesGanadoras(){
+    system("cls");
+    cout << endl << "\t\t\t\tCOMBINACIONES GANADORAS" << endl << endl << endl;
+    cout << "\t             Combinación             | Nombre jugada |    Puntaje otorgado    " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 1            | Juego de 1    | Suma de la cantidad    " << endl;
+    cout << "\t                                     |               | de dados con el valor 1" << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 2            | Juego de 2    | 2*suma cantidad de     " << endl;
+    cout << "\t                                     |               | dados con valor 2      " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 3            | Juego de 3    | 3*suma cantidad de     " << endl;
+    cout << "\t                                     |               | dados con valor 3      " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 4            | Juego de 4    | 4*suma cantidad de     " << endl;
+    cout << "\t                                     |               | dados con valor 4      " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 5            | Juego de 5    | 5*suma cantidad de     " << endl;
+    cout << "\t                                     |               | dados con valor 5      " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t1 ó más dados con valor 6            | Juego de 6    | 6*suma cantidad de     " << endl;
+    cout << "\t                                     |               | dados con valor 6      " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t5 dados en orden creciente           | Escalera      | 25                     " << endl;
+    cout << "\t(1, 2, 3, 4, 5) ó (2,3,4,5,6)        |               |                        " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t3 dados iguales, más otros 2 iguales | Full          | 30                     " << endl;
+    cout << "\tEjemplo:                             |               |                        " << endl;
+    cout << "\t(3,3,3,2,2), (1,1,4,4,4)             |               |                        " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t 4 dados iguales                     | Póker         | 40                     " << endl;
+    cout << "\t Ejemplo:                            |               |                        " << endl;
+    cout << "\t(3,3,3,3,2), (1,4,4,4,4)             |               |                        " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl;
+    cout << "\t5 dados con el mismo valor           | Generala      | 50                     " << endl;
+    cout << "\tEjemplos:                            |               | Si es en un tiro       " << endl;
+    cout << "\t(1,1,1,1,1) , (6,6,6,6,6), etc       |               | sólo gana el partido   " << endl;
+    cout << "\t------------------------------------------------------------------------------" << endl << endl;
+
+    cout << "\tDe obtener más de una combinación en el mismo lanzamiento, siempre deberá     " << endl;
+    cout << "\tsumar el puntaje de mayor valor.                                              " << endl;
+    cout << endl << endl;
+    system("pause");
+}
 /**
     DEFINICION DE LAS FUNCIONES PARA EL JUEGO
 */
 
 void juegoMain(int vec[],int tam){
 
-    int cantDados, nRonda=0, puntaje=0, i, cont=0;
+    int cantDados, nRonda=0, puntaje=0, i, cont=0, puntos=0;
     bool menu = false, ciclo=false;
-    char conf='S', nombre[20];
-    int lanzamiento; //prueba de ciclos
-    cout << "INGRESE SU NOMBRE: ";
-    //cin.getline(nombre, 20);
-    cin >> nombre;
+    char conf='S', nombre[25];
+    int lanzamiento;
+    puntos = calcularPuntaje(vec, tam);
+    puntaje+=puntos;
     for(i=0;i<10;i++){
         cargarDados(vec, tam);
         nRonda = i+1;
@@ -94,14 +184,24 @@ void juegoMain(int vec[],int tam){
                 cin >> cantDados;
                 switch(cantDados){
                     case 1: cambiarDados(vec, 1);
+                            puntos = calcularPuntaje(vec, tam);
+                            puntaje+=puntos;
                         break;
                     case 2: cambiarDados(vec, 2);
+                        puntos = calcularPuntaje(vec, tam);
+                            puntaje+=puntos;
                         break;
                     case 3: cambiarDados(vec, 3);
+                            puntos = calcularPuntaje(vec, tam);
+                            puntaje+=puntos;
                         break;
                     case 4: cambiarDados(vec, 4);
+                            puntos = calcularPuntaje(vec, tam);
+                            puntaje+=puntos;
                         break;
                     case 5: cargarDados(vec, tam);
+                            puntos = calcularPuntaje(vec, tam);
+                            puntaje+=puntos;
                         break;
                     default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
                             system("pause");

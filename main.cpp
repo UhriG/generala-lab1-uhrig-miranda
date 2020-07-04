@@ -40,7 +40,7 @@ int main()
                 break;
             case 2: subMenuPuntaje(vec, tam);
                 break;
-            case 3:
+            case 3: subMenuReglamento();
                 break;
             case 4: cout << endl << "¿ESTA SEGURO QUE DESEA SALIR? (S/N): ";
                 cin >> sn;
