@@ -18,7 +18,7 @@ void subMenuJugar(int vec[], int tam){
     system("cls");
     while(!menu){
         system("cls");
-        cout << "\t\t\t\tJugar" << endl;
+        cartelJugar(1);
         cout << "1. 1 Jugador " << endl;
         cout << "2. 2 Jugadores " << endl;
         cout << "3. Demo - Ingreso manual de dados " << endl;
@@ -167,6 +167,7 @@ void juegoMain(int vec[],int tam){
     bool menu = false, ciclo=false;
     char conf='S', nombre[25];
     int lanzamiento;
+    cargarNombre(nombre); /// CARGA EL NOMBRE
     puntos = calcularPuntaje(vec, tam);
     puntaje+=puntos;
     for(i=0;i<10;i++){
@@ -213,6 +214,7 @@ void juegoMain(int vec[],int tam){
                 cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
                 system("pause");
             }
+            ///entreTurno(nombre, nRonda, puntaje); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
         }
         menu = false;
 }
@@ -315,3 +317,44 @@ void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento,
     mostrarDados(vec, tam);
     cout << endl;
 }
+
+/// CARGA NOMBRE
+void cargarNombre(char nombre[]){
+    cout << endl << endl;
+    cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######." << endl;
+    cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##" << endl;
+    cout << "\t\t.##.....##..##..##.......####..##.##.....##.##.......####..##..##..##.....##.##.....##" << endl;
+    cout << "\t\t.########...##..######...##.##.##.##.....##.######...##.##.##..##..##.....##.##.....##" << endl;
+    cout << "\t\t.##.....##..##..##.......##..####..##...##..##.......##..####..##..##.....##.##.....##" << endl;
+    cout << "\t\t.##.....##..##..##.......##...###...##.##...##.......##...###..##..##.....##.##.....##" << endl;
+    cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######." << endl << endl;
+    cout << endl << endl;
+    cout<<"Ingrese tu nombre para registrarse: ";
+    cin>>nombre;
+    cout<< endl;
+    cout << nombre<<" Listo para continuar?"<<endl;
+    system("pause");
+}
+
+/// ENTRE TURNOS
+void entreTurno(char nombre[], int nronda, int puntos){
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\tRONDA N° " <<nronda << " | JUGADOR " << nombre << " | PUNTAJE: " << puntos << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
+    system("pause");
+}
+
+/// CARTELES
+void cartelJugar(int){
+cout << endl << endl;
+    cout << "\t\t.......##.##.....##..######......###....########.." << endl;
+    cout << "\t\t.......##.##.....##.##....##....##.##...##.....##." << endl;
+    cout << "\t\t.......##.##.....##.##.........##...##..##.....##." << endl;
+    cout << "\t\t.......##.##.....##.##...####.##.....##.########.." << endl;
+    cout << "\t\t.##....##.##.....##.##....##..#########.##...##..." << endl;
+    cout << "\t\t.##....##.##.....##.##....##..##.....##.##....##.." << endl;
+    cout << "\t\t..######...#######...######...##.....##.##.....##." << endl << endl;
+    cout << endl << endl;
+}
+
