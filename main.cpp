@@ -17,6 +17,8 @@ int main()
     cargarDados(vec, tam);
     int opc;
     char sn;
+    char guardarNombres[30];
+    int guardarPuntajes[30];
 
     while(true){
         system("cls");
@@ -36,7 +38,7 @@ int main()
         cin >> opc;
         system("cls");
         switch(opc){
-            case 1: subMenuJugar(vec, tam);
+            case 1: subMenuJugar(vec, tam, guardarNombres, guardarPuntajes);
                 break;
             case 2: subMenuPuntaje(vec, tam);
                 break;

@@ -12,13 +12,13 @@ using namespace std;
 */
 
 ///Submenu jugar
-void subMenuJugar(int vec[], int tam){
+void subMenuJugar(int vec[], int tam, char guardarNombres[], int guardarPuntajes[]){
     bool menu = false;
     int opc;
     system("cls");
     while(!menu){
         system("cls");
-        cartelJugar(1);
+        cartelJugar();
         cout << "1. 1 Jugador " << endl;
         cout << "2. 2 Jugadores " << endl;
         cout << "3. Demo - Ingreso manual de dados " << endl;
@@ -28,7 +28,7 @@ void subMenuJugar(int vec[], int tam){
         system("cls");
         switch(opc){
             case 1:
-                juegoMain(vec, tam);
+                juegoMain(vec, tam, guardarNombres, guardarPuntajes);
                 break;
             case 2:
                 break;
@@ -161,7 +161,7 @@ void combinacionesGanadoras(){
     DEFINICION DE LAS FUNCIONES PARA EL JUEGO
 */
 
-void juegoMain(int vec[],int tam){
+void juegoMain(int vec[],int tam, char guardarNombres[], int guardarPuntajes[]){
 
     int cantDados, nRonda=0, puntaje=0, i, cont=0, puntos=0;
     bool menu = false, ciclo=false;
@@ -346,7 +346,7 @@ void entreTurno(char nombre[], int nronda, int puntos){
 }
 
 /// CARTELES
-void cartelJugar(int){
+void cartelJugar(){
 cout << endl << endl;
     cout << "\t\t.......##.##.....##..######......###....########.." << endl;
     cout << "\t\t.......##.##.....##.##....##....##.##...##.....##." << endl;
