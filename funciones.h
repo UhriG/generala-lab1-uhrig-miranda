@@ -26,6 +26,9 @@ int ultimoJugador(int []); /// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO MU
 void guardarDatos(int, char [], string [], int []); /// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS ALMACENA EN PUNTAJES
 void ordenarRanking(int [], char []);/// ORDENAR PUNTAJES MAYOR A MENOR
 void mostrarVector(int [], char []); /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+void copiarVector(int [], int, int[]);
+void ordenarDados(int [], int);
+void mostrarPuntosParciales(int [], int);
 
 /**
     DECLARACION DE FUNCIONES DE CARTELES

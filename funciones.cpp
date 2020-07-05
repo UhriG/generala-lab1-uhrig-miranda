@@ -163,21 +163,21 @@ void combinacionesGanadoras(){
 
 void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
 
-    int cantDados, nRonda=0, puntaje=0, i, cont=0, puntos=0;
+    int cantDados, nRonda=0, puntajeTotal=0, i, cont=0, puntosRonda=0;
     bool menu = false, ciclo=false;
     char conf='S', nombre[25];
     int lanzamiento;
     cargarNombre(nombre); /// CARGA EL NOMBRE
-    puntos = calcularPuntaje(vec, tam);
-    puntaje+=puntos;
+    puntosRonda = calcularPuntaje(vec, tam);
     for(i=0;i<10;i++){
         cargarDados(vec, tam);
         nRonda = i+1;
         lanzamiento = 0; //prueba ciclos
         while(lanzamiento<2){
             lanzamiento++;
-            cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
+            cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
             cout << endl << endl;
+            mostrarPuntosParciales(vec, tam);
             cout << "¿CONTINUAR LANZANDO? (S/N): ";
             cin >> conf;
             if(conf=='S' || conf == 's'){
@@ -185,24 +185,19 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                 cin >> cantDados;
                 switch(cantDados){
                     case 1: cambiarDados(vec, 1);
-                            puntos = calcularPuntaje(vec, tam);
-                            puntaje+=puntos;
+                            puntosRonda = calcularPuntaje(vec, tam);
                         break;
                     case 2: cambiarDados(vec, 2);
-                        puntos = calcularPuntaje(vec, tam);
-                            puntaje+=puntos;
+                            puntosRonda = calcularPuntaje(vec, tam);
                         break;
                     case 3: cambiarDados(vec, 3);
-                            puntos = calcularPuntaje(vec, tam);
-                            puntaje+=puntos;
+                            puntosRonda = calcularPuntaje(vec, tam);
                         break;
                     case 4: cambiarDados(vec, 4);
-                            puntos = calcularPuntaje(vec, tam);
-                            puntaje+=puntos;
+                            puntosRonda = calcularPuntaje(vec, tam);
                         break;
                     case 5: cargarDados(vec, tam);
-                            puntos = calcularPuntaje(vec, tam);
-                            puntaje+=puntos;
+                            puntosRonda = calcularPuntaje(vec, tam);
                         break;
                     default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
                             system("pause");
@@ -211,12 +206,13 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                     menu = true;
                     lanzamiento = 2; //termina ciclo;
                 }
-                cabeceraJuego(vec, tam, nRonda, puntaje, lanzamiento, nombre);
+                cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
                 system("pause");
             }
-            ///entreTurno(nombre, nRonda, puntaje); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            puntajeTotal+=puntosRonda;
+            entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
         }
-        guardarDatos(puntaje, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
+        guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
         menu = false;
 }
 
@@ -253,60 +249,101 @@ void cambiarDados(int vec[],int i){
         tirarDados(vec, i, pos-1);
     }
 }
-int buscarDadosRepetidos(int v[], int tam, int numero){
+int buscarDadosRepetidos(int vec[], int tam, int numero){
     int i, cant=0;
     for(i=0;i<tam;i++){
-        if(v[i]==numero) cant++;
+        if(vec[i]==numero) cant++;
         }
     return cant;
 }
 
-int calcularPuntaje(int v[], int tam){
-    int i, cant, puntos;
-    for(i=0;i<tam; i++){
-        cant = buscarDadosRepetidos(v, tam, i+1);
-        if(cant==5){
-            int puntos = 50; //Generala
+//Ordena el vector de dados de menor a mayor.
+void ordenarDados(int vec[], int tam){
+    int i,j, posmin, aux;
+    for(i=0;i<tam;i++){
+        posmin=i;
+        for(j=i+1;j<tam;j++){
+            if(vec[j]<vec[posmin]) posmin=j;
         }
-        if(cant==4){
-            puntos = 40; //Poker
-        }
+        aux=vec[i];
+        vec[i]=vec[posmin];
+        vec[posmin]=aux;
     }
+}
 
-    int uno = buscarDadosRepetidos(v, tam, 1)*1;
-    int dos = buscarDadosRepetidos(v, tam, 2)*2;
-    int tres = buscarDadosRepetidos(v, tam, 2)*3;
-    int cuatro = buscarDadosRepetidos(v, tam, 2)*4;
-    int cinco = buscarDadosRepetidos(v, tam, 2)*5;
-    int seis = buscarDadosRepetidos(v, tam, 2)*6;
+//Copia en otro vector el contenido del vector 1
+void copiarVector(int vec[], int tam, int v2[]){
+    int i;
+    for(i=0;i<tam;i++){
+        v2[i]=vec[i];
+    }
+}
 
-    if (seis>uno && seis>dos && seis>tres && seis>cuatro && seis>cinco){
-        puntos=seis;
+//Calcula que tipo de puntaje corresponde por jugada.
+int calcularPuntaje(int vec[], int tam){
+    int vCopia[tam], puntos;
+    int uno, dos, tres, cuatro, cinco, seis;
+
+    copiarVector(vec, tam, vCopia);
+    ordenarDados(vCopia,tam);
+
+    if (vCopia[0]==vCopia[1] && vCopia[1]==vCopia[2] && vCopia[2]==vCopia[3] && vCopia[3]==vCopia[4]){ //GENERALA
+        puntos=50;
+        cout<<endl<<"Se obtuvo: GENERALA"<<endl;
     }
     else{
-        if (cinco>uno && cinco>dos && cinco>tres && cinco>cuatro){
-            puntos=cinco;
+        if ((vCopia[0]==vCopia[1] && vCopia[1]==vCopia[2] && vCopia[2]==vCopia[3]) || (vCopia[1]==vCopia[2] && vCopia[2]==vCopia[3] && vCopia[3]==vCopia[4])){ //POKER
+            puntos=40;
+            cout<<endl<<"Se obtuvo: POKER"<<endl;
         }
         else{
-            if (cuatro>uno && cuatro>dos && cuatro>tres){
-                puntos=cuatro;
+            if (((vCopia[0]==vCopia[1] && vCopia[1]==vCopia[2]) && (vCopia[3]==vCopia[4])) || ((vCopia[2]==vCopia[3] && vCopia[3]==vCopia[4]) && (vCopia[0]==vCopia[1]))){ //FULL
+                puntos=30;
+                cout<<endl<<"Se obtuvo: FULL"<<endl;
             }
             else{
-                if (tres>uno && tres>dos){
-                    puntos=tres;
+                if (vec[0]==(vec[1]-1) && vec[1]==(vec[2]-1) && vec[2]==(vec[3]-1) && vec[3]==(vec[4]-1)){ //ESCALERA
+                    puntos=25;
+                    cout<<endl<<"Se obtuvo: ESCALERA"<<endl;
                 }
                 else{
-                    if(dos>uno){
-                        puntos=dos;
+                    uno = buscarDadosRepetidos(vec, tam, 1)*1;
+                    dos = buscarDadosRepetidos(vec, tam, 2)*2;
+                    tres = buscarDadosRepetidos(vec, tam, 3)*3;
+                    cuatro = buscarDadosRepetidos(vec, tam, 4)*4;
+                    cinco = buscarDadosRepetidos(vec, tam, 5)*5;
+                    seis = buscarDadosRepetidos(vec, tam, 6)*6;
+                    if (seis>uno && seis>dos && seis>tres && seis>cuatro && seis>cinco){
+                        puntos=seis;
                     }
                     else{
-                        puntos=uno;
+                        if (cinco>uno && cinco>dos && cinco>tres && cinco>cuatro){
+                            puntos=cinco;
+                        }
+                        else{
+                            if (cuatro>uno && cuatro>dos && cuatro>tres){
+                                puntos=cuatro;
+                            }
+                            else{
+                                if (tres>uno && tres>dos){
+                                    puntos=tres;
+                                }
+                                else{
+                                    if(dos>uno){
+                                        puntos=dos;
+                                    }
+                                    else{
+                                        puntos=uno;
+                                    }
+                                }
+                            }
+                        }
                     }
+                    cout<<endl;
                 }
             }
         }
     }
-
     return puntos;
 }
 
@@ -401,6 +438,7 @@ void ordenarVectorDescendente(int v[], int tam ){
 
 /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void mostrarVector(int guardarPuntajes[], char guardarNombres[]){
+
     int i, tam=30;
     void cartelPuntaje();
     for(i=0;i<tam;i++){
@@ -416,8 +454,15 @@ void mostrarVector(int guardarPuntajes[], char guardarNombres[]){
     system("pause");
 }
 
+void mostrarPuntosParciales(int vec[], int tam){
+    int puntos = 0;
+    puntos = calcularPuntaje(vec, tam);
+    cout << "PUNTOS ACTUALES: " << puntos << endl << endl;
+}
+
 /// ENTRE TURNOS
 void entreTurno(char nombre[], int nronda, int puntos){
+    system("cls");
     cout << "---------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\tRONDA N° " <<nronda << " | JUGADOR " << nombre << " | PUNTAJE: " << puntos << endl << endl;
     cout << "---------------------------------------------------------------------------------" << endl << endl;
