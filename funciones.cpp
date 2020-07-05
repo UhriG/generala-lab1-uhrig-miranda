@@ -313,7 +313,7 @@ void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento,
     system("cls");
     cout << "\t\tTURNO DE " << nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
     cout << "---------------------------------------------------------------------------------" << endl;
-    cout << "--------------------- LANZAMIENTO N°: "<< lanzamiento+1 << " -----------------------------------------" << endl << endl;
+    cout << "--------------------- TE QUEDAN "<< lanzamiento+1 << " LANZAMIENTOS ----------------------------------" << endl << endl;
     mostrarDados(vec, tam);
     cout << endl;
 }
@@ -332,7 +332,7 @@ void cargarNombre(char nombre[]){
     cout<<"Ingrese tu nombre para registrarse: ";
     cin>>nombre;
     cout<< endl;
-    cout << nombre<<" Listo para continuar?"<<endl;
+    cout << nombre<<" listo para continuar?"<< endl << endl;
     system("pause");
 }
 

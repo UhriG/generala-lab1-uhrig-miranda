@@ -14,7 +14,7 @@ int main()
     system("color 0a");
     const int tam = 5;
     int vec[tam];
-    cargarDados(vec, tam);
+    //cargarDados(vec, tam);
     int opc;
     char sn;
     char guardarNombres[30];

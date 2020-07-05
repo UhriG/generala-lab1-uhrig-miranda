@@ -28,3 +28,22 @@
 	<locale.h>
 	"funciones.h"
 
+1593901181 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+	<locale.h>
+	<windows.h>
+	"funciones.h"
+
+1593901088 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.h
+
+1593901805 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\main.cpp
+	<iostream>
+	<windows.h>
+	<stdio.h>
+	<wchar.h>
+	<locale.h>
+	"funciones.h"
+
