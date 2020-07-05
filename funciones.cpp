@@ -12,7 +12,7 @@ using namespace std;
 */
 
 ///Submenu jugar
-void subMenuJugar(int vec[], int tam, char guardarNombres[], int guardarPuntajes[]){
+void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntajes[]){
     bool menu = false;
     int opc;
     system("cls");
@@ -161,7 +161,7 @@ void combinacionesGanadoras(){
     DEFINICION DE LAS FUNCIONES PARA EL JUEGO
 */
 
-void juegoMain(int vec[],int tam, char guardarNombres[], int guardarPuntajes[]){
+void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
 
     int cantDados, nRonda=0, puntaje=0, i, cont=0, puntos=0;
     bool menu = false, ciclo=false;
@@ -216,6 +216,7 @@ void juegoMain(int vec[],int tam, char guardarNombres[], int guardarPuntajes[]){
             }
             ///entreTurno(nombre, nRonda, puntaje); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
         }
+        guardarDatos(puntaje, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
         menu = false;
 }
 
@@ -336,6 +337,85 @@ void cargarNombre(char nombre[]){
     system("pause");
 }
 
+//RANKIGN DE PUNTAJE
+/// PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
+void ponerCero(int guardarPuntajes[], int tam){
+    int i;
+    for(i=0;i<tam;i++){
+        guardarPuntajes[i]=0;
+    }
+}
+
+/// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO DEVUELVE
+int ultimoJugador(int puntos[]){
+    for (int i=0;i<30;i++){
+        if (puntos[i]==0){
+            return(i);
+        }
+    }
+}
+
+/// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS ALMACENA EN PUNTAJES
+void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guardarPuntajes[]){
+     int ultimoregistro;
+     ultimoregistro = ultimoJugador(guardarPuntajes);
+     guardarPuntajes[ultimoregistro] = puntos;
+     guardarNombres[ultimoregistro] = string (nombre);
+}
+
+/// ORDENAR PUNTAJES DE MENOR A MAYOR
+void ordenarRanking(int guardarPuntajes[], char guardarNombres[]){
+    int limite, posmin, auxPuntos;
+    char auxNombres;
+    limite= ultimoJugador(guardarPuntajes);
+    for(int i=0;i<limite;i++){
+
+        for(int x=0;x<limite-1;x++){
+
+            if(guardarPuntajes[x]<guardarPuntajes[i]) {
+                auxPuntos = guardarPuntajes[i];
+                guardarPuntajes[i] = guardarPuntajes[x];
+                guardarPuntajes[x] = auxPuntos;
+                auxNombres = guardarNombres[i];
+                guardarNombres[i] = guardarPuntajes[x];
+                guardarNombres[i] = auxNombres;
+            }
+        }
+    }
+
+}
+/**
+void ordenarVectorDescendente(int v[], int tam ){
+    int i,j, posmax, aux;
+    for(i=0;i<tam-1;i++){
+        posmax=i;
+        for(j=i+1;j<tam;j++){
+            if(v[j]>v[posmax]) posmax=j;
+        }
+        aux=v[i];
+        v[i]=v[posmax];
+        v[posmax]=aux;
+    }
+}
+*/
+
+/// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+void mostrarVector(int guardarPuntajes[], char guardarNombres[]){
+    int i, tam=30;
+    void cartelPuntaje();
+    for(i=0;i<tam;i++){
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\tJUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
+        cout<< guardarNombres[i] << "\t";
+        cout<< guardarPuntajes[i] << "\t";
+    cout << endl << endl;
+
+    }
+    system("pause");
+}
+
 /// ENTRE TURNOS
 void entreTurno(char nombre[], int nronda, int puntos){
     cout << "---------------------------------------------------------------------------------" << endl << endl;
@@ -358,3 +438,14 @@ cout << endl << endl;
     cout << endl << endl;
 }
 
+void cartelPuntaje(){
+cout << endl << endl;
+    cout << "\t\t.########..##.....##.##....##.########....###..........##.########..######.." << endl;
+    cout << "\t\t.##.....##.##.....##.###...##....##......##.##.........##.##.......##....##." << endl;
+    cout << "\t\t.##.....##.##.....##.####..##....##.....##...##........##.##.......##......." << endl;
+    cout << "\t\t.########..##.....##.##.##.##....##....##.....##.......##.######....######.." << endl;
+    cout << "\t\t.##........##.....##.##..####....##....#########.##....##.##.............##." << endl;
+    cout << "\t\t.##........##.....##.##...###....##....##.....##.##....##.##.......##....##." << endl;
+    cout << "\t\t.##.........#######..##....##....##....##.....##..######..########..######.." << endl << endl;
+    cout << endl << endl;
+}

@@ -17,8 +17,9 @@ int main()
     //cargarDados(vec, tam);
     int opc;
     char sn;
-    char guardarNombres[30];
+    string guardarNombres[30];
     int guardarPuntajes[30];
+    ponerCero(guardarPuntajes, 30);
 
     while(true){
         system("cls");
