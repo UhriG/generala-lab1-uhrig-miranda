@@ -181,6 +181,10 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
             mostrarPuntosParciales(vec, tam);
             cout << "¿CONTINUAR LANZANDO? (S/N): ";
             cin >> conf;
+            while(conf!='S' && conf!='s' && conf!='N' && conf!='n'){
+                cout << "\nIngrese una opcion valida!" << endl;
+                cin >> conf;
+            }
             if(conf=='S' || conf == 's'){
                 cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
                 cin >> cantDados;
@@ -215,7 +219,7 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                 entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
             }
         }
-        cartelGameover(nombre, nRonda, puntosRonda);
+        cartelGameover(nombre, nRonda, puntajeTotal);
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
 }
 
@@ -507,6 +511,7 @@ void cartelGameover(char nombre[], int nronda, int puntos){
     cout << "\t\t.##....##..##.....##.##.....##.##..........##.....##...##.##...##.......##....##.." << endl;
     cout << "\t\t..######...##.....##.##.....##.########.....#######.....###....########.##.....##." << endl << endl;
     cout << endl << endl;
+    cout << "\t\t\tNO CONSEGUISTE SACAR GENERALA SERVIDA :( MEJOR SUERTE LA PROXIMA!" << endl << endl;
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\t\tRONDAS TOTALES: " <<nronda << " | JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << endl << endl;
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
