@@ -5,7 +5,7 @@
     DECLARACION DE FUNCIONES MENÚ
 */
 void subMenuJugar(int [], int, string[], int[]);
-void subMenuPuntaje(int [], int);
+void subMenuPuntaje(int [], int, string[], int[]);
 void subMenuReglamento();
 void reglas();
 void combinacionesGanadoras();
@@ -24,8 +24,8 @@ void cargarNombre(char []); /// CARGA NOMBRE
 void ponerCero(int [], int); /// PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
 int ultimoJugador(int []); /// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO MUESTRA
 void guardarDatos(int, char [], string [], int []); /// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS ALMACENA EN PUNTAJES
-void ordenarRanking(int [], char []);/// ORDENAR PUNTAJES MAYOR A MENOR
-void mostrarVector(int [], char []); /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+void ordenarPuntaje(int [], string []);/// ORDENAR PUNTAJES MAYOR A MENOR
+void mostrarVector(int [], string []); /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void copiarVector(int [], int, int[]);
 void ordenarDados(int [], int);
 void mostrarPuntosParciales(int [], int);
@@ -36,5 +36,5 @@ void mostrarPuntosParciales(int [], int);
 void cartelJugar(); ///cartel MENU jugar
 void cartelPuntaje(); /// cartel PUNTAJE
 void entreTurno(char [], int, int); /// cartel entre turnos
-
+void cartelGameover(char [], int, int); /// cartel GAME OVER
 #endif // FUNCIONES_H_INCLUDED

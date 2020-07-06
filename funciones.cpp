@@ -44,14 +44,18 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
 }
 
 ///Submenu puntajes
-void subMenuPuntaje(int vec[], int tam){
+void subMenuPuntaje(int vec[], int tam, string guardarNombres[], int guardarPuntajes[]){
     bool menu = false;
     int opc;
     system("cls");
     while(!menu){
         system("cls");
-        cout << "\t\t\t\tPUNTAJES" << endl;
-        cout << "1 para volver al menú anterior: ";
+        cartelPuntaje();
+
+        ordenarPuntaje(guardarPuntajes, guardarNombres);
+        mostrarVector(guardarPuntajes, guardarNombres);
+
+        cout << "Ingrese 1 para volver al menú anterior: ";
         cin >> opc;
         system("cls");
         switch(opc){
@@ -208,9 +212,12 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                 cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
                 system("pause");
             }
-            puntajeTotal+=puntosRonda;
-            entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            if(nRonda<10){
+                puntajeTotal+=puntosRonda;
+                entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            }
         }
+        cartelGameover(nombre, nRonda, puntosRonda);
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
 }
 
@@ -398,10 +405,10 @@ void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guarda
      guardarNombres[ultimoregistro] = string (nombre);
 }
 
-/// ORDENAR PUNTAJES DE MENOR A MAYOR
-void ordenarRanking(int guardarPuntajes[], char guardarNombres[]){
-    int limite, posmin, auxPuntos;
-    char auxNombres;
+/// ORDENAR PUNTAJES DE MAYOR A MENOR
+void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
+    int limite, auxPuntos;
+    string auxNombres;
     limite= ultimoJugador(guardarPuntajes);
     for(int i=0;i<limite;i++){
 
@@ -435,21 +442,18 @@ void ordenarVectorDescendente(int v[], int tam ){
 */
 
 /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
-void mostrarVector(int guardarPuntajes[], char guardarNombres[]){
+void mostrarVector(int guardarPuntajes[], string guardarNombres[]){
 
-    int i, tam=30;
+    int i, tam=10;
     void cartelPuntaje();
+    cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     for(i=0;i<tam;i++){
-    cout << "---------------------------------------------------------------------------------" << endl << endl;
-    cout << "\t\tJUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
-    cout << "---------------------------------------------------------------------------------" << endl << endl;
-    cout << endl << endl;
-        cout<< guardarNombres[i] << "\t";
-        cout<< guardarPuntajes[i] << "\t";
-    cout << endl << endl;
+
+    cout << "\t\t\t\t\tJUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
 
     }
-    system("pause");
+    cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
 }
 
 void mostrarPuntosParciales(int vec[], int tam){
@@ -491,4 +495,22 @@ cout << endl << endl;
     cout << "\t\t.##........##.....##.##...###....##....##.....##.##....##.##.......##....##." << endl;
     cout << "\t\t.##.........#######..##....##....##....##.....##..######..########..######.." << endl << endl;
     cout << endl << endl;
+}
+
+void cartelGameover(char nombre[], int nronda, int puntos){
+    system("cls");
+    cout << endl << endl;
+    cout << "\t\t..######......###....##.....##.########.....#######..##.....##.########.########.." << endl;
+    cout << "\t\t.##....##....##.##...###...###.##..........##.....##.##.....##.##.......##.....##." << endl;
+    cout << "\t\t.##.........##...##..####.####.##..........##.....##.##.....##.##.......##.....##." << endl;
+    cout << "\t\t.##...####.##.....##.##.###.##.######......##.....##.##.....##.######...########.." << endl;
+    cout << "\t\t.##....##..#########.##.....##.##..........##.....##..##...##..##.......##...##..." << endl;
+    cout << "\t\t.##....##..##.....##.##.....##.##..........##.....##...##.##...##.......##....##.." << endl;
+    cout << "\t\t..######...##.....##.##.....##.########.....#######.....###....########.##.....##." << endl << endl;
+    cout << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tRONDAS TOTALES: " <<nronda << " | JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
+    system("pause");
 }
