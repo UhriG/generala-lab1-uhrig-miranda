@@ -354,6 +354,7 @@ int calcularPuntaje(int vec[], int tam){
 
 void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento, char nombre[]){
     system("cls");
+    cout << "---------------------------------------------------------------------------------" << endl;
     cout << "\t\tTURNO DE " << nombre << " | RONDA N°: " << nRonda << " | PUNTAJE: " << puntaje << endl;
     cout << "---------------------------------------------------------------------------------" << endl;
     cout << "--------------------- TE QUEDAN "<< lanzamiento+1 << " LANZAMIENTOS ----------------------------------" << endl << endl;
