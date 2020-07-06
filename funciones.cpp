@@ -51,10 +51,8 @@ void subMenuPuntaje(int vec[], int tam, string guardarNombres[], int guardarPunt
     while(!menu){
         system("cls");
         cartelPuntaje();
-
         ordenarPuntaje(guardarPuntajes, guardarNombres);
         mostrarVector(guardarPuntajes, guardarNombres);
-
         cout << "Ingrese 1 para volver al menú anterior: ";
         cin >> opc;
         system("cls");
@@ -398,7 +396,7 @@ int ultimoJugador(int puntos[]){
     }
 }
 
-/// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS ALMACENA EN PUNTAJES
+/// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
 void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guardarPuntajes[]){
      int ultimoregistro;
      ultimoregistro = ultimoJugador(guardarPuntajes);
@@ -514,4 +512,41 @@ void cartelGameover(char nombre[], int nronda, int puntos){
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
     system("pause");
+}
+
+/**
+    DEFINICION DE LAS FUNCIONES PARA EL MODO 2 JUGADORES
+*/
+
+/// CARGA 2 NOMBRES
+void cargarNombres(char nombre[], char nombredos[]){
+    cout << endl << endl;
+    cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######...######." << endl;
+    cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##.##....##" << endl;
+    cout << "\t\t.##.....##..##..##.......####..##.##.....##.##.......####..##..##..##.....##.##.....##.##......" << endl;
+    cout << "\t\t.########...##..######...##.##.##.##.....##.######...##.##.##..##..##.....##.##.....##..######." << endl;
+    cout << "\t\t.##.....##..##..##.......##..####..##...##..##.......##..####..##..##.....##.##.....##.......##" << endl;
+    cout << "\t\t.##.....##..##..##.......##...###...##.##...##.......##...###..##..##.....##.##.....##.##....##" << endl;
+    cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######...######." << endl << endl;
+    cout << endl << endl;
+    cout<<"1er Jugador ingrese su nombre para registrarse: ";
+    cin>>nombre;
+    cout<< endl;
+    cout<<"2do Jugador ingrese su nombre para registrarse: ";
+    cin>>nombredos;
+    cout<< endl;
+    cout << nombre<<" y "<< nombredos<<" listos para continuar?"<< endl << endl;
+    system("pause");
+}
+
+/// RECIBE LOS NOMBRES Y PUNTOS DEL JUGADOR 1, JUGADOR 2 Y LOS GUARDA EN PUNTAJES
+void guardarDatos(int puntos, char nombreUno[], char nombreDos[], string guardarNombres[], int guardarPuntajes[]){
+     int ultimoregistro, ultimoregistro2;
+     ultimoregistro = ultimoJugador(guardarPuntajes);
+     guardarPuntajes[ultimoregistro] = puntos;
+     guardarNombres[ultimoregistro] = string (nombreUno);
+///GUARDA EL 2DO JUGADOR
+     ultimoregistro2 = ultimoJugador(guardarPuntajes);
+     guardarPuntajes[ultimoregistro2] = puntos;
+     guardarNombres[ultimoregistro2] = string (nombreDos);
 }

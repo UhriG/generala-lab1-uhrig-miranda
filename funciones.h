@@ -23,12 +23,14 @@ void cabeceraJuego(int[], int, int, int, int, char[]);
 void cargarNombre(char []); /// CARGA NOMBRE
 void ponerCero(int [], int); /// PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
 int ultimoJugador(int []); /// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO MUESTRA
-void guardarDatos(int, char [], string [], int []); /// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS ALMACENA EN PUNTAJES
+void guardarDatos(int, char [], string [], int []); /// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
 void ordenarPuntaje(int [], string []);/// ORDENAR PUNTAJES MAYOR A MENOR
 void mostrarVector(int [], string []); /// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void copiarVector(int [], int, int[]);
 void ordenarDados(int [], int);
 void mostrarPuntosParciales(int [], int);
+
+void cargarNombres(char [], char []);/// CARGA 2 NOMBRES
 
 /**
     DECLARACION DE FUNCIONES DE CARTELES
