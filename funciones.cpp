@@ -44,28 +44,10 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
 }
 
 ///Submenu puntajes
-void subMenuPuntaje(int vec[], int tam, string guardarNombres[], int guardarPuntajes[]){
-    bool menu = false;
-    int opc;
-    system("cls");
-    while(!menu){
-        system("cls");
-        cartelPuntaje();
-        ordenarPuntaje(guardarPuntajes, guardarNombres);
-        mostrarVector(guardarPuntajes, guardarNombres);
-        cout << "Ingrese 1 para volver al menú anterior: ";
-        cin >> opc;
-        system("cls");
-        switch(opc){
-            case 1: menu = true;
-                break;
-
-            default: cout << "Por favor ingrese una opción válida (1-4)" << endl << endl;
-                     system("pause");
-
-        }
-
-    }
+void subMenuPuntaje(string guardarNombres[], int guardarPuntajes[]){
+    cartelPuntaje();
+    ordenarPuntaje(guardarPuntajes, guardarNombres);
+    mostrarVector(guardarPuntajes, guardarNombres);
 }
 
 void subMenuReglamento(){
@@ -165,12 +147,15 @@ void combinacionesGanadoras(){
 
 void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
 
-    int cantDados, nRonda=0, puntajeTotal=0, i, cont=0, puntosRonda=0;
+    int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf='S', nombre[25];
-    int lanzamiento;
+    bool generalaServida = false;
     cargarNombre(nombre); /// CARGA EL NOMBRE
     puntosRonda = calcularPuntaje(vec, tam);
-    for(i=0;i<10;i++){
+    if(puntosRonda==50){
+        generalaServida = true;
+    }
+    for(i=0;i<10 || generalaServida==true;i++){
         cargarDados(vec, tam);
         nRonda = i+1;
         lanzamiento = 2; //prueba ciclos
@@ -214,12 +199,18 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                 cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
                 system("pause");
             }
-            if(nRonda<10){
-                puntajeTotal+=puntosRonda;
-                entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
-            }
+            entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            puntajeTotal+=puntosRonda;
         }
-        cartelGameover(nombre, nRonda, puntajeTotal);
+        puntajeTotal+=puntosRonda;
+
+        if(nRonda==10){
+            cartelGameover(nombre, nRonda, puntajeTotal);
+
+        }else{
+           cartelGenerala(nombre, nRonda, puntajeTotal);
+        }
+
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
 }
 
@@ -452,11 +443,12 @@ void mostrarVector(int guardarPuntajes[], string guardarNombres[]){
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     for(i=0;i<tam;i++){
 
-    cout << "\t\t\t\t\tJUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
+    cout << "\t\t\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
 
     }
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
+    system("pause");
 }
 
 void mostrarPuntosParciales(int vec[], int tam){
@@ -518,6 +510,10 @@ void cartelGameover(char nombre[], int nronda, int puntos){
     cout << endl << endl;
     system("pause");
 }
+
+void cartelGenerala(char nombre [], int nRonda, int puntos){
+    cout << "GENERALA GANASTE" << endl << endl;
+} /// cartel GENERALA
 
 /**
     DEFINICION DE LAS FUNCIONES PARA EL MODO 2 JUGADORES

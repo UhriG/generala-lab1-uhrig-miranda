@@ -41,7 +41,7 @@ int main()
         switch(opc){
             case 1: subMenuJugar(vec, tam, guardarNombres, guardarPuntajes);
                 break;
-            case 2: subMenuPuntaje(vec, tam, guardarNombres, guardarPuntajes);
+            case 2: subMenuPuntaje(guardarNombres, guardarPuntajes);
                 break;
             case 3: subMenuReglamento();
                 break;

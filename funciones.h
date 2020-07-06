@@ -5,7 +5,7 @@
     DECLARACION DE FUNCIONES MENÚ
 */
 void subMenuJugar(int [], int, string[], int[]);
-void subMenuPuntaje(int [], int, string[], int[]);
+void subMenuPuntaje(string[], int[]);
 void subMenuReglamento();
 void reglas();
 void combinacionesGanadoras();
@@ -39,4 +39,6 @@ void cartelJugar(); ///cartel MENU jugar
 void cartelPuntaje(); /// cartel PUNTAJE
 void entreTurno(char [], int, int); /// cartel entre turnos
 void cartelGameover(char [], int, int); /// cartel GAME OVER
+void cartelGenerala(char [], int, int); /// cartel GENERALA
+
 #endif // FUNCIONES_H_INCLUDED

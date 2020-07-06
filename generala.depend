@@ -28,7 +28,7 @@
 	<locale.h>
 	"funciones.h"
 
-1593989768 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.cpp
+1594074140 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -37,9 +37,9 @@
 	<windows.h>
 	"funciones.h"
 
-1594065023 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.h
+1594073937 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.h
 
-1594065023 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\main.cpp
+1594073980 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\main.cpp
 	<iostream>
 	<windows.h>
 	<stdio.h>
