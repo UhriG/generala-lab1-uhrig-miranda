@@ -41,9 +41,9 @@ void cambiarDadosManual(int [], int);
 */
 void cartelJugar(); ///cartel MENU jugar
 void cartelPuntaje(); /// cartel PUNTAJE
-void entreTurno(char [], int, int, bool); /// cartel entre turnos
+void entreTurno(char [], int, int); /// cartel entre turnos
 void cartelGameover(char [], int, int); /// cartel GAME OVER
 void cartelGenerala(char [], int, int); /// cartel GENERALA
-void entreTurnoDos(char [],char [], int, int, int); /// cartel entre turnos dos
-void cartelGameoverDos(char [],char [], int, int, int); /// cartel GAME OVER DOS
+void entreTurnoDos(char [],char [] int, int, int); /// cartel entre turnos dos
+void cartelGameoverDos(char [],char [] int, int, int); /// cartel GAME OVER DOS
 #endif // FUNCIONES_H_INCLUDED
