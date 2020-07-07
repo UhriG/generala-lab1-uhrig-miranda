@@ -233,7 +233,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
     bool generalaServida = true, mostrarEntreTurno = true;
     int puntosUno=0, puntosDos=0; ///verificar si sirven
     char nombre[25]; ///la declare para que me deje correr todo
-    //cargarNombreDos(nombreUno, nombreDos); /// CARGA 2 NOMBRES
+    cargarNombreDos(nombreUno, nombreDos); /// CARGA 2 NOMBRES
 
     for(i=0;i<10 && generalaServida;i++){
         cargarDados(vec, tam);
