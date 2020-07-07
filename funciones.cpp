@@ -306,17 +306,18 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
 */
 
 void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
-
+    ponerCero(vec, tam);
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf, nombre[25];
     bool generalaServida = true, mostrarEntreTurno = true;
     cargarNombre(nombre); /// CARGA EL NOMBRE
 
     for(i=0;i<10 && generalaServida;i++){
+        lanzamiento = 2; //prueba ciclos
+        cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
         cargarDadosManual(vec, tam);
         puntosRonda = calcularPuntaje(vec, tam);
         nRonda = i+1;
-        lanzamiento = 2; //prueba ciclos
         while(lanzamiento>0){
             if(puntosRonda==50){
                 lanzamiento = -1;
@@ -365,7 +366,7 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
                     cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
                     system("pause");
                 }
-
+                ponerCero(vec, tam);
             }
 
             entreTurno(nombre, nRonda, puntosRonda, mostrarEntreTurno); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
@@ -389,7 +390,7 @@ void cargarDados(int vec[],int tam){
 }
 
 void cargarDadosManual(int vec[], int tam){
-    system("cls");
+
     int i, n;
     for(i=0;i<tam;i++){
         cout << "Ingrese un valor para el dado n° " << i+1 << " (1-6): ";

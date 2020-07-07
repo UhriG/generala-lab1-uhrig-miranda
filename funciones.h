@@ -33,7 +33,7 @@ void ordenarDados(int [], int);
 void mostrarPuntosParciales(int [], int);
 void juegoMainDos(int [], int, string[], int[]);/// MODO 2 JUGADORES
 void guardarDatosDos(int, int, char [], char [], string [], int []);/// RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
-void cargarNombresDos(char [], char []);/// CARGA 2 NOMBRES
+void cargarNombreDos(char [], char []);/// CARGA 2 NOMBRES
 void cargarDadosManual(int [], int);
 void tirarDadosManual(int [], int, int, int);
 void cambiarDadosManual(int [], int);
