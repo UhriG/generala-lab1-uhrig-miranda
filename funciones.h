@@ -31,7 +31,9 @@ void mostrarVector(int [], string []); /// MUESTRA LO QUE CONTIENE LAS POSICIONE
 void copiarVector(int [], int, int[]);
 void ordenarDados(int [], int);
 void mostrarPuntosParciales(int [], int);
-void cargarNombres(char [], char []);/// CARGA 2 NOMBRES
+void juegoMainDos(int [], int, string[], int[]);/// MODO 2 JUGADORES
+void guardarDatosDos(int, int, char [], char [], string [], int []);/// RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
+void cargarNombresDos(char [], char []);/// CARGA 2 NOMBRES
 void cargarDadosManual(int [], int);
 void tirarDadosManual(int [], int, int, int);
 void cambiarDadosManual(int [], int);
