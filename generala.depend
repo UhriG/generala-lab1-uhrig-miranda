@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1593735314 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\tpi-generala\main.cpp
+1594083704 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\tpi-generala\main.cpp
 	<iostream>
 	<windows.h>
 	<stdio.h>
@@ -7,43 +7,14 @@
 	<locale.h>
 	"funciones.h"
 
-1593738918 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\tpi-generala\funciones.h
+1594084846 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\tpi-generala\funciones.h
 
-1593996576 source:c:\users\maxi\documents\github\generala-lab1\funciones.cpp
+1594086456 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\tpi-generala\funciones.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
 	<stdio.h>
 	<locale.h>
 	<windows.h>
-	"funciones.h"
-
-1594006738 c:\users\maxi\documents\github\generala-lab1\funciones.h
-
-1593992647 source:c:\users\maxi\documents\github\generala-lab1\main.cpp
-	<iostream>
-	<windows.h>
-	<stdio.h>
-	<wchar.h>
-	<locale.h>
-	"funciones.h"
-
-1594074140 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.cpp
-	<iostream>
-	<stdlib.h>
-	<time.h>
-	<stdio.h>
-	<locale.h>
-	<windows.h>
-	"funciones.h"
-
-1594073937 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.h
-
-1594073980 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\main.cpp
-	<iostream>
-	<windows.h>
-	<stdio.h>
-	<wchar.h>
-	<locale.h>
 	"funciones.h"
 

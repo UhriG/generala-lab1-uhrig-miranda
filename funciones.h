@@ -9,11 +9,13 @@ void subMenuPuntaje(string[], int[]);
 void subMenuReglamento();
 void reglas();
 void combinacionesGanadoras();
+
 /**
     DECLARACION DE FUNCIONES DEL JUEGO
 */
 void cargarDados(int [], int);
 void juegoMain(int [], int, string[], int[]);
+void juegoManual(int [], int, string[], int[]);
 void mostrarDados(int [], int);
 void tirarDados(int [], int, int);
 void cambiarDados(int [], int);
@@ -29,8 +31,10 @@ void mostrarVector(int [], string []); /// MUESTRA LO QUE CONTIENE LAS POSICIONE
 void copiarVector(int [], int, int[]);
 void ordenarDados(int [], int);
 void mostrarPuntosParciales(int [], int);
-
 void cargarNombres(char [], char []);/// CARGA 2 NOMBRES
+void cargarDadosManual(int [], int);
+void tirarDadosManual(int [], int, int, int);
+void cambiarDadosManual(int [], int);
 
 /**
     DECLARACION DE FUNCIONES DE CARTELES
