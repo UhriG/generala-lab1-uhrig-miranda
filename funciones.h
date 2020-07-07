@@ -44,5 +44,6 @@ void cartelPuntaje(); /// cartel PUNTAJE
 void entreTurno(char [], int, int); /// cartel entre turnos
 void cartelGameover(char [], int, int); /// cartel GAME OVER
 void cartelGenerala(char [], int, int); /// cartel GENERALA
-
+void entreTurnoDos(char [],char [] int, int, int); /// cartel entre turnos dos
+void cartelGameoverDos(char [],char [] int, int, int); /// cartel GAME OVER DOS
 #endif // FUNCIONES_H_INCLUDED

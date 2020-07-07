@@ -659,3 +659,53 @@ void guardarDatos(int puntos, char nombreUno[], char nombreDos[], string guardar
      guardarPuntajes[ultimoregistro2] = puntos;
      guardarNombres[ultimoregistro2] = string (nombreDos);
 }
+/// cartel entre turnos dos
+void entreTurnoDos(char nombreUno[],char nombreDos[] int nronda, int puntosUno, int puntosDos){
+    system("cls");
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\tRONDA N° " <<nronda << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\tJUGADOR N° 1: " << nombreUno << " | PUNTAJE: " << puntosUno << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\tJUGADOR N° 2: " << nombreDos << " | PUNTAJE: " << puntosDos << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
+    system("pause");
+}
+/// cartel GAME OVER DOS
+void cartelGameoverDos(char nombreUno[],char nombreDos[] int nronda, int puntosUno, int puntosDos){
+    system("cls");
+    int primero, segundo, auxPuntos;
+    char auxNombres[];
+    primero = puntosUno;
+    segundo = puntosDos;
+    if(primero < segundo){
+        auxNombres = nombreDos;
+        nombreUno = nombreDos;
+        nombreDos = auxNombres;
+        auxPuntos = puntosDos;
+        puntosDos = puntosUno;
+        puntosUno = auxPuntos;
+    }
+
+    cout << endl << endl;
+    cout << "\t\t..######......###....##.....##.########.....#######..##.....##.########.########.." << endl;
+    cout << "\t\t.##....##....##.##...###...###.##..........##.....##.##.....##.##.......##.....##." << endl;
+    cout << "\t\t.##.........##...##..####.####.##..........##.....##.##.....##.##.......##.....##." << endl;
+    cout << "\t\t.##...####.##.....##.##.###.##.######......##.....##.##.....##.######...########.." << endl;
+    cout << "\t\t.##....##..#########.##.....##.##..........##.....##..##...##..##.......##...##..." << endl;
+    cout << "\t\t.##....##..##.....##.##.....##.##..........##.....##...##.##...##.......##....##.." << endl;
+    cout << "\t\t..######...##.....##.##.....##.########.....#######.....###....########.##.....##." << endl << endl;
+    cout << endl << endl;
+    cout << "\t\t\tNO CONSEGUIERON SACAR GENERALA SERVIDA :( MEJOR SUERTE LA PROXIMA!" << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\t\tRONDAS TOTALES: " <<nronda << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tGANADOR JUGADOR: " << nombreUno << " | PUNTAJE TOTAL: " << puntosUno << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tPERDEDOR JUGADOR: " << nombreDos << " | PUNTAJE TOTAL: " << puntosDos << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << endl << endl;
+    system("pause");
+
+}
