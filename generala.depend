@@ -18,3 +18,22 @@
 	<windows.h>
 	"funciones.h"
 
+1594158992 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+	<locale.h>
+	<windows.h>
+	"funciones.h"
+
+1594159169 c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\funciones.h
+
+1594083704 source:c:\users\uhrig\desktop\utn frgp\1° cuatrimestre\laboratorio de informatica\tp funciones\generala\generala-lab1\main.cpp
+	<iostream>
+	<windows.h>
+	<stdio.h>
+	<wchar.h>
+	<locale.h>
+	"funciones.h"
+
