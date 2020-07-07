@@ -153,68 +153,70 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
 
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf='S', nombre[25];
-    bool generalaServida = true;
+    bool generalaServida = true, mostrarEntreTurno = true;
     cargarNombre(nombre); /// CARGA EL NOMBRE
-    cargarDados(vec, tam);
-    puntosRonda = calcularPuntaje(vec, tam);
 
     for(i=0;i<10 && generalaServida;i++){
         cargarDados(vec, tam);
+        puntosRonda = calcularPuntaje(vec, tam);
         nRonda = i+1;
         lanzamiento = 2; //prueba ciclos
         while(lanzamiento>0){
             if(puntosRonda==50){
+                lanzamiento = -1;
                 generalaServida = false;
-            }
-            lanzamiento--;
-            cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
-            cout << endl << endl;
-            mostrarPuntosParciales(vec, tam);
-            cout << "¿CONTINUAR LANZANDO? (S/N): ";
-            cin >> conf;
-            while(conf!='S' && conf!='s' && conf!='N' && conf!='n'){
-                cout << "\nIngrese una opcion valida!" << endl;
-                cin >> conf;
-            }
-            if(conf=='S' || conf == 's'){
-                cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-                cin >> cantDados;
-                switch(cantDados){
-                    case 1: cambiarDados(vec, 1);
-                            puntosRonda = calcularPuntaje(vec, tam);
-                        break;
-                    case 2: cambiarDados(vec, 2);
-                            puntosRonda = calcularPuntaje(vec, tam);
-                        break;
-                    case 3: cambiarDados(vec, 3);
-                            puntosRonda = calcularPuntaje(vec, tam);
-                        break;
-                    case 4: cambiarDados(vec, 4);
-                            puntosRonda = calcularPuntaje(vec, tam);
-                        break;
-                    case 5: cargarDados(vec, tam);
-                            puntosRonda = calcularPuntaje(vec, tam);
-                        break;
-                    default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                            system("pause");
-                    }
-                }else{
-                    puntosRonda = calcularPuntaje(vec, tam);
-                    lanzamiento = -1; //termina ciclo;
-                }
+                puntajeTotal += 1000;
+                mostrarEntreTurno = false;
+                cartelGenerala(nombre, nRonda, puntajeTotal);
+            }else{
+                lanzamiento--;
                 cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
-                system("pause");
+                cout << endl << endl;
+                mostrarPuntosParciales(vec, tam);
+                cout << "¿CONTINUAR LANZANDO? (S/N): ";
+                cin >> conf;
+                while(conf!='S' && conf!='s' && conf!='N' && conf!='n'){
+                    cout << "\nIngrese una opcion valida!" << endl;
+                    cin >> conf;
+                }
+                if(conf=='S' || conf == 's'){
+                    cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
+                    cin >> cantDados;
+                    switch(cantDados){
+                        case 1: cambiarDados(vec, 1);
+                                puntosRonda = calcularPuntaje(vec, tam);
+                            break;
+                        case 2: cambiarDados(vec, 2);
+                                puntosRonda = calcularPuntaje(vec, tam);
+                            break;
+                        case 3: cambiarDados(vec, 3);
+                                puntosRonda = calcularPuntaje(vec, tam);
+                            break;
+                        case 4: cambiarDados(vec, 4);
+                                puntosRonda = calcularPuntaje(vec, tam);
+                            break;
+                        case 5: cargarDados(vec, tam);
+                                puntosRonda = calcularPuntaje(vec, tam);
+                            break;
+                        default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
+                                system("pause");
+                        }
+                    }else{
+                        puntosRonda = calcularPuntaje(vec, tam);
+                        lanzamiento = -1; //termina ciclo;
+                    }
+                    cabeceraJuego(vec, tam, nRonda, puntajeTotal, lanzamiento, nombre);
+                    system("pause");
+                }
+
             }
-            entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            entreTurno(nombre, nRonda, puntosRonda, mostrarEntreTurno); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
             puntajeTotal+=puntosRonda;
         }
         //puntajeTotal+=puntosRonda;
 
         if(nRonda==10){
             cartelGameover(nombre, nRonda, puntajeTotal);
-
-        }else{
-           cartelGenerala(nombre, nRonda, puntajeTotal);
         }
 
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
@@ -228,7 +230,7 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
 
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf, nombre[25];
-    bool generalaServida = true;
+    bool generalaServida = true, mostrarEntreTurno = true;
     cargarNombre(nombre); /// CARGA EL NOMBRE
 
     for(i=0;i<10 && generalaServida;i++){
@@ -241,6 +243,7 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
                 lanzamiento = -1;
                 generalaServida = false;
                 puntajeTotal += 1000;
+                mostrarEntreTurno = false;
                 cartelGenerala(nombre, nRonda, puntajeTotal);
             }
             else{
@@ -286,14 +289,13 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
 
             }
 
-            entreTurno(nombre, nRonda, puntosRonda); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
+            entreTurno(nombre, nRonda, puntosRonda, mostrarEntreTurno); ///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
             puntajeTotal+=puntosRonda;
         }
 
 
         if(nRonda==10){
             cartelGameover(nombre, nRonda, puntajeTotal);
-
         }
 
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
@@ -523,7 +525,7 @@ void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guarda
 void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
     int limite, auxPuntos;
     string auxNombres;
-    limite= ultimoJugador(guardarPuntajes);
+    limite = ultimoJugador(guardarPuntajes);
     for(int i=0;i<limite;i++){
 
         for(int x=0;x<limite-1;x++){
@@ -564,13 +566,15 @@ void mostrarPuntosParciales(int vec[], int tam){
 }
 
 /// ENTRE TURNOS
-void entreTurno(char nombre[], int nronda, int puntos){
-    system("cls");
-    cout << "---------------------------------------------------------------------------------" << endl << endl;
-    cout << "\t\tRONDA N° " <<nronda << " | JUGADOR " << nombre << " | PUNTAJE: " << puntos << endl << endl;
-    cout << "---------------------------------------------------------------------------------" << endl << endl;
-    cout << endl << endl;
-    system("pause");
+void entreTurno(char nombre[], int nronda, int puntos, bool estado){
+    if(estado==true){
+        system("cls");
+        cout << "---------------------------------------------------------------------------------" << endl << endl;
+        cout << "\t\tRONDA N° " <<nronda << " | JUGADOR " << nombre << " | PUNTAJE: " << puntos << endl << endl;
+        cout << "---------------------------------------------------------------------------------" << endl << endl;
+        cout << endl << endl;
+        system("pause");
+    }
 }
 
 /// CARTELES
@@ -660,7 +664,7 @@ void guardarDatos(int puntos, char nombreUno[], char nombreDos[], string guardar
      guardarNombres[ultimoregistro2] = string (nombreDos);
 }
 /// cartel entre turnos dos
-void entreTurnoDos(char nombreUno[],char nombreDos[] int nronda, int puntosUno, int puntosDos){
+void entreTurnoDos(char nombreUno[],char nombreDos[], int nronda, int puntosUno, int puntosDos){
     system("cls");
     cout << "---------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\tRONDA N° " <<nronda << endl << endl;
@@ -673,20 +677,20 @@ void entreTurnoDos(char nombreUno[],char nombreDos[] int nronda, int puntosUno, 
     system("pause");
 }
 /// cartel GAME OVER DOS
-void cartelGameoverDos(char nombreUno[],char nombreDos[] int nronda, int puntosUno, int puntosDos){
+void cartelGameoverDos(char nombreUno[],char nombreDos[], int nronda, int puntosUno, int puntosDos){
     system("cls");
     int primero, segundo, auxPuntos;
-    char auxNombres[];
+    string auxNombres;
     primero = puntosUno;
     segundo = puntosDos;
-    if(primero < segundo){
+    /**if(primero < segundo){
         auxNombres = nombreDos;
         nombreUno = nombreDos;
         nombreDos = auxNombres;
         auxPuntos = puntosDos;
         puntosDos = puntosUno;
         puntosUno = auxPuntos;
-    }
+    }*/
 
     cout << endl << endl;
     cout << "\t\t..######......###....##.....##.########.....#######..##.....##.########.########.." << endl;

@@ -18,3 +18,22 @@
 	<windows.h>
 	"funciones.h"
 
+1594127429 source:c:\users\lintelgroup\documents\github\generala-lab1\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+	<locale.h>
+	<windows.h>
+	"funciones.h"
+
+1594128310 c:\users\lintelgroup\documents\github\generala-lab1\funciones.h
+
+1594127429 source:c:\users\lintelgroup\documents\github\generala-lab1\main.cpp
+	<iostream>
+	<windows.h>
+	<stdio.h>
+	<wchar.h>
+	<locale.h>
+	"funciones.h"
+
