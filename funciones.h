@@ -21,7 +21,6 @@ void tirarDados(int [], int, int);
 void cambiarDados(int [], int);
 int buscarDadosRepetidos(int [], int, int );///cuenta la cantidad de veces que se repite un //número en el vector
 int calcularPuntaje(int [], int);
-void cabeceraJuego(int[], int, int, int, int, char[]);
 void cargarNombre(char []); /// CARGA NOMBRE
 void ponerCero(int [], int); /// PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
 int ultimoJugador(int []); /// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO MUESTRA
@@ -37,15 +36,17 @@ void cargarNombreDos(char [], char []);/// CARGA 2 NOMBRES
 void cargarDadosManual(int [], int);
 void tirarDadosManual(int [], int, int, int);
 void cambiarDadosManual(int [], int);
+int validarIngreso(int, int , int );
 
 /**
     DECLARACION DE FUNCIONES DE CARTELES
 */
+void cabeceraJuego(int[], int, int, int, int, char[]);
 void cartelJugar(); ///cartel MENU jugar
 void cartelPuntaje(); /// cartel PUNTAJE
 void entreTurno(char [], int, int, bool); /// cartel entre turnos
 void cartelGameover(char [], int, int); /// cartel GAME OVER
 void cartelGenerala(char [], int, int); /// cartel GENERALA
-void entreTurnoDos(char [],char [], int, int, int); /// cartel entre turnos dos
+void entreTurnoDos(char [],char [], int, int, int, bool); /// cartel entre turnos dos
 void cartelGameoverDos(char [],char [], int, int, int); /// cartel GAME OVER DOS
 #endif // FUNCIONES_H_INCLUDED
