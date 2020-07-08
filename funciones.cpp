@@ -768,13 +768,24 @@ void cartelGameover(char nombre[], int nronda, int puntos){
     cout << endl << endl;
     system("pause");
 }
-
+/// cartel GENERALA
 void cartelGenerala(char nombre [], int nRonda, int puntos){
     system("cls");
     cout << "GENERALA GANASTE" << endl << endl;
-    system("pause");
-} /// cartel GENERALA
 
+    cout << "\t\t..######...########.##....##.########.########.....###....##..........###..." << endl;
+    cout << "\t\t.##....##..##.......###...##.##.......##.....##...##.##...##.........##.##.." << endl;
+    cout << "\t\t.##........##.......####..##.##.......##.....##..##...##..##........##...##." << endl;
+    cout << "\t\t.##...####.######...##.##.##.######...########..##.....##.##.......##.....##" << endl;
+    cout << "\t\t.##....##..##.......##..####.##.......##...##...#########.##.......#########" << endl;
+    cout << "\t\t.##....##..##.......##...###.##.......##....##..##.....##.##.......##.....##" << endl;
+    cout << "\t\t..######...########.##....##.########.##.....##.##.....##.########.##.....##" << endl << endl;
+    cout << endl << endl;
+    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tGANADOR JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    system("pause");
+}
 /**
     DEFINICION DE LAS FUNCIONES PARA EL MODO 2 JUGADORES
 */
@@ -857,14 +868,23 @@ void cartelGameoverDos(char nombreUno[],char nombreDos[], int nRonda, int puntos
     cout << "\t\t\t\tPERDEDOR JUGADOR: " << nombreDos << " | PUNTAJE TOTAL: " << puntosDos << endl << endl;
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
 
-    }else{
+    }else{if(segundo > primero){
 
     cout << "\t\t\t\tGANADOR JUGADOR: " << nombreDos << " | PUNTAJE TOTAL: " << puntosDos << endl << endl;
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\t\tPERDEDOR JUGADOR: " << nombreUno << " | PUNTAJE TOTAL: " << puntosUno << endl << endl;
     cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
 
+    }else{
+
+    cout << "\t\t\t\t\tEMPATE AMBOS JUGADORES"<< endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tJUGADOR: " << nombreUno << " | JUGADOR: " << nombreDos << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t\t\tOBTUVIERON EL MISMO PUNTAJE TOTAL: " << puntosUno << endl << endl;
+    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
     }
+}
     cout << endl << endl;
     system("pause");
 }
