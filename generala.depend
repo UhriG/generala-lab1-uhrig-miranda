@@ -37,7 +37,7 @@
 	<locale.h>
 	"funciones.h"
 
-1594159310 source:c:\users\maxi\documents\github\generala-lab1\funciones.cpp
+1594249783 source:c:\users\maxi\documents\github\generala-lab1\funciones.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -46,7 +46,7 @@
 	<windows.h>
 	"funciones.h"
 
-1594174598 c:\users\maxi\documents\github\generala-lab1\funciones.h
+1594250411 c:\users\maxi\documents\github\generala-lab1\funciones.h
 
 1594177352 source:c:\users\maxi\documents\github\generala-lab1\main.cpp
 	<iostream>

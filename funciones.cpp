@@ -11,7 +11,7 @@ using namespace std;
     DEFINICION DE LAS FUNCIONES PARA EL MENU
 */
 
-///Submenu jugar
+///MENU JUGAR
 void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntajes[]){
     bool menu = false;
     int opc;
@@ -42,13 +42,13 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
     }
 }
 
-///Submenu puntajes
+///MENU PUNTAJE
 void subMenuPuntaje(string guardarNombres[], int guardarPuntajes[]){
     cartelPuntaje();
     ordenarPuntaje(guardarPuntajes, guardarNombres);
     mostrarVector(guardarPuntajes, guardarNombres);
 }
-
+///MENU REGLAMENTO
 void subMenuReglamento(){
     bool menu = false;
     int opc;
@@ -72,7 +72,7 @@ void subMenuReglamento(){
         }
     }
 }
-
+///MUESTRA REGLAS
 void reglas(){
     system("cls");
     cout << endl << "\t\t\t\t\tREGLAMENTO DEL JUEGO" << endl << endl << endl;
@@ -93,7 +93,7 @@ void reglas(){
     cout << "\tGenerala en el primer tiro gana la partida." << endl << endl << endl << endl;
     system("pause");
 }
-
+///MUESTRA COMBINACIONES GANADORAS
 void combinacionesGanadoras(){
     system("cls");
     cout << endl << "\t\t\t\tCOMBINACIONES GANADORAS" << endl << endl << endl;
@@ -146,6 +146,7 @@ void combinacionesGanadoras(){
 /**
     JUEGO DE UN JUGADOR
 */
+///MODO 1 JUGADOR
 void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
 
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
@@ -220,6 +221,7 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
 /**
     JUEGO DE DOS JUGADORES
 */
+///MODO 2 JUGADORES
 void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
 
     int cantDados, nRonda=0, puntajeTotalUno=0, puntajeTotalDos=0, i, puntosRonda=0, lanzamiento;
@@ -354,7 +356,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
 /**
     JUEGO CON DADOS MANUALES
 */
-
+///MODO JUGAR DEMOSTRACION INGRESO MANUAL DE DADOS
 void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
     ponerCero(vec, tam);
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
@@ -428,7 +430,7 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
         }
         guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
 }
-
+///CARGA DADOS
 void cargarDados(int vec[],int tam){
 
     int i;
@@ -437,7 +439,7 @@ void cargarDados(int vec[],int tam){
         vec[i] = 1 + (rand()%6);
     }
 }
-
+///VERIFICA LOS DATOS INGRESADOS QUE SEAN CORRECTOS
 int validarIngreso(int j, int menor, int mayor){
     //validamos que el ingreso sea un entero y entre el 1 y el 6
     while(!(cin >> j) || (j < menor || j > mayor)){
@@ -450,7 +452,7 @@ int validarIngreso(int j, int menor, int mayor){
     }
     return j;
 }
-
+///INGRESAR LOS DADOS MANUALMENTE
 void cargarDadosManual(int vec[], int tam){
 
     int i, j, menor=1, mayor=6;
@@ -460,7 +462,7 @@ void cargarDadosManual(int vec[], int tam){
         vec[i] = j;
     }
 }
-
+///MUESTRA LOS VALORES DE LOS DADOS
 void mostrarDados(int vec[], int tam){
     int i;
     for(i=0;i<tam; i++){
@@ -468,7 +470,7 @@ void mostrarDados(int vec[], int tam){
     }
     cout << endl;
 }
-
+///TIRA DADOS DE FORMA RANDOM
 void tirarDados(int vec[], int cant, int pos){
     int i;
     srand(time(NULL));
@@ -476,14 +478,14 @@ void tirarDados(int vec[], int cant, int pos){
         vec[pos] = 1 + (rand()%6);
     }
 }
-
+///TIRA LOS DADOS MANUALMENTE
 void tirarDadosManual(int vec[], int cant, int pos, int valor){
     int i;
     for(i=0;i<cant;i++){
         vec[pos] = valor;
     }
 }
-
+///CAMBIAR DADOS SEGUN ELECCION
 void cambiarDados(int vec[],int i){
     int j, pos;
     for(j=0; j<i; j++){
@@ -492,7 +494,7 @@ void cambiarDados(int vec[],int i){
         tirarDados(vec, i, pos-1);
     }
 }
-
+///CAMBIA DADOS MANUALMENTE
 void cambiarDadosManual(int vec[], int cant){
     int i, pos, valor;
     for(i=0; i<cant; i++){
@@ -504,7 +506,7 @@ void cambiarDadosManual(int vec[], int cant){
     }
 
 }
-
+///CUENTA LA CANTIDAD DE VECES QUE SE REPITE UN NUMERO EN EL VECTOR
 int buscarDadosRepetidos(int vec[], int tam, int numero){
     int i, cant=0;
     for(i=0;i<tam;i++){
@@ -513,7 +515,7 @@ int buscarDadosRepetidos(int vec[], int tam, int numero){
     return cant;
 }
 
-//Ordena el vector de dados de menor a mayor.
+///ORDENAR EL VECTOR DE DADOS DE MENOR A MAYOR.
 void ordenarDados(int vec[], int tam){
     int i,j, posmin, aux;
     for(i=0;i<tam;i++){
@@ -527,7 +529,7 @@ void ordenarDados(int vec[], int tam){
     }
 }
 
-//Copia en otro vector el contenido del vector 1
+///COPIA EN OTRO VECTOR EL CONTENIDO DEL VECTOR 1 EN EL VECTOR 2
 void copiarVector(int vec[], int tam, int v2[]){
     int i;
     for(i=0;i<tam;i++){
@@ -535,7 +537,7 @@ void copiarVector(int vec[], int tam, int v2[]){
     }
 }
 
-//Calcula que tipo de puntaje corresponde por jugada.
+///CALCULA QUE TIPO DE PUNTAJE CORRESPONDE POR JUGADA
 int calcularPuntaje(int vec[], int tam){
     int vCopia[tam], puntos;
     int uno, dos, tres, cuatro, cinco, seis;
@@ -602,7 +604,7 @@ int calcularPuntaje(int vec[], int tam){
     }
     return puntos;
 }
-
+///MUESTRA LA CABECERA DEL JUEGO MOSTRANDO NOMBRE PUNTOS NUMERO DE RONDA
 void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento, char nombre[]){
     system("cls");
     cout << "---------------------------------------------------------------------------------" << endl;
@@ -613,8 +615,9 @@ void cabeceraJuego(int vec[], int tam, int nRonda, int puntaje, int lanzamiento,
     cout << endl;
 }
 
-/// CARGA NOMBRE
+///CARGA NOMBRE DE 1 JUGADOR
 void cargarNombre(char nombre[]){
+    cin.ignore();
     cout << endl << endl;
     cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######." << endl;
     cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##" << endl;
@@ -625,14 +628,14 @@ void cargarNombre(char nombre[]){
     cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######." << endl << endl;
     cout << endl << endl;
     cout<<"Ingrese su nombre para registrarse: ";
-    cin>>nombre;
+    cin.getline(nombre,25);
     cout<< endl;
     cout << nombre<<" listo para continuar?"<< endl << endl;
     system("pause");
 }
 
 //RANKIGN DE PUNTAJE
-/// PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
+///PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
 void ponerCero(int guardarPuntajes[], int tam){
     int i;
     for(i=0;i<tam;i++){
@@ -640,7 +643,7 @@ void ponerCero(int guardarPuntajes[], int tam){
     }
 }
 
-/// BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO DEVUELVE
+///BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO DEVUELVE
 int ultimoJugador(int puntos[]){
     for (int i=0;i<30;i++){
         if (puntos[i]==0){
@@ -649,7 +652,7 @@ int ultimoJugador(int puntos[]){
     }
 }
 
-/// RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
+///RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
 void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guardarPuntajes[]){
      int ultimoRegistro;
      ultimoRegistro = ultimoJugador(guardarPuntajes);
@@ -657,7 +660,7 @@ void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guarda
      guardarNombres[ultimoRegistro] = string (nombre);
 }
 
-/// ORDENAR PUNTAJES DE MAYOR A MENOR
+///ORDENAR PUNTAJES MAYOR A MENOR
 void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
     int i,j, posmax;
     int limite, auxPuntos;
@@ -678,7 +681,7 @@ void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
     }
 }
 
-/// MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void mostrarVector(int guardarPuntajes[], string guardarNombres[]){
 
     int i, tam=10;
@@ -693,14 +696,14 @@ void mostrarVector(int guardarPuntajes[], string guardarNombres[]){
     cout << endl << endl;
     system("pause");
 }
-
+///MUESTRA LOS PUNTOS ACTUALES AL TIRAR LOS DADOS
 void mostrarPuntosParciales(int vec[], int tam){
     int puntos = 0;
     puntos = calcularPuntaje(vec, tam);
     cout << "PUNTOS ACTUALES: " << puntos << endl << endl;
 }
 
-/// ENTRE TURNOS
+///CARTEL ENTRE TURNOS
 void entreTurno(char nombre[], int nronda, int puntos, bool estado){
     if(estado==true){
         system("cls");
@@ -713,6 +716,7 @@ void entreTurno(char nombre[], int nronda, int puntos, bool estado){
 }
 
 /// CARTELES
+///CARTEL MENU JUGAR
 void cartelJugar(){
 cout << endl << endl;
     cout << "\t\t.......##.##.....##..######......###....########.." << endl;
@@ -724,7 +728,7 @@ cout << endl << endl;
     cout << "\t\t..######...#######...######...##.....##.##.....##." << endl << endl;
     cout << endl << endl;
 }
-
+///CARTEL DE PUNTAJE
 void cartelPuntaje(){
 cout << endl << endl;
     cout << "\t\t.########..##.....##.##....##.########....###..........##.########..######.." << endl;
@@ -736,7 +740,7 @@ cout << endl << endl;
     cout << "\t\t.##.........#######..##....##....##....##.....##..######..########..######.." << endl << endl;
     cout << endl << endl;
 }
-
+///CARTEL GAME OVER
 void cartelGameover(char nombre[], int nronda, int puntos){
     system("cls");
     cout << endl << endl;
@@ -755,7 +759,7 @@ void cartelGameover(char nombre[], int nronda, int puntos){
     cout << endl << endl;
     system("pause");
 }
-/// cartel GENERALA
+///CARTEL GENERALA!!!
 void cartelGenerala(char nombre [], int nRonda, int puntos){
     int c=1;
     system("cls");
@@ -786,17 +790,18 @@ void cartelGenerala(char nombre [], int nRonda, int puntos){
         cout << "\t\t.##....##..##.......##...###.##.......##....##..##.....##.##.......##.....##" << endl;
         cout << "\t\t..######...########.##....##.########.##.....##.##.....##.########.##.....##" << endl << endl;
         cout << endl << endl;
-    cout << "---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t-----------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\t\tGANADOR JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << endl << endl;
-    cout << "\t\t---------------------------------------------------------------------------------" << endl << endl;
+    cout << "\t\t-----------------------------------------------------------------------------" << endl << endl;
     system("pause");
 }
 /**
     DEFINICION DE LAS FUNCIONES PARA EL MODO 2 JUGADORES
 */
 
-/// CARGA 2 NOMBRES
+///CARGA 2 NOMBRES
 void cargarNombreDos(char nombreUno[], char nombreDos[]){
+    cin.ignore();
     cout << endl << endl;
     cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######...######." << endl;
     cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##.##....##" << endl;
@@ -807,16 +812,16 @@ void cargarNombreDos(char nombreUno[], char nombreDos[]){
     cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######...######." << endl << endl;
     cout << endl << endl;
     cout<<"1er Jugador ingrese su nombre para registrarse: ";
-    cin>>nombreUno;
+    cin.getline(nombreUno,25);
     cout<< endl;
     cout<<"2do Jugador ingrese su nombre para registrarse: ";
-    cin>>nombreDos;
+    cin.getline(nombreDos,25);
     cout<< endl;
     cout << nombreUno<<" y "<< nombreDos<<" listos para continuar?"<< endl << endl;
     system("pause");
 }
 
-/// RECIBE LOS NOMBRES Y PUNTOS DEL JUGADOR 1, JUGADOR 2 Y LOS GUARDA EN PUNTAJES
+///RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
 void guardarDatosDos(int puntosUno, int puntosDos, char nombreUno[], char nombreDos[], string guardarNombres[], int guardarPuntajes[]){
      int ultimoRegistro, ultimoRegistro2;
      ultimoRegistro = ultimoJugador(guardarPuntajes);
@@ -827,7 +832,7 @@ void guardarDatosDos(int puntosUno, int puntosDos, char nombreUno[], char nombre
      guardarPuntajes[ultimoRegistro2] = puntosDos;
      guardarNombres[ultimoRegistro2] = string (nombreDos);
 }
-/// cartel entre turnos dos
+///CARTEL ENTRE TURNOS DOS
 void entreTurnoDos(char nombreUno[],char nombreDos[], int nRonda, int puntosUno, int puntosDos, bool proximoTurno){
     system("cls");
 
@@ -846,7 +851,7 @@ void entreTurnoDos(char nombreUno[],char nombreDos[], int nRonda, int puntosUno,
     cout << endl << endl;
     system("pause");
 }
-/// cartel GAME OVER DOS
+///CARTEL GAME OVER DOS
 void cartelGameoverDos(char nombreUno[],char nombreDos[], int nRonda, int puntosUno, int puntosDos){
     system("cls");
     int primero, segundo;
