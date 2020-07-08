@@ -35,7 +35,7 @@ int main()
         cout << "3. Reglas " << endl;
         cout << "4. Salir " << endl << endl;
         cout << "Ingrese la opción deseada: ";
-        cin >> opc;
+        opc = validarIngreso(opc, 1, 4);
         system("cls");
         switch(opc){
             case 1: subMenuJugar(vec, tam, guardarNombres, guardarPuntajes);

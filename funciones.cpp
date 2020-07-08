@@ -24,7 +24,7 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
         cout << "3. Demo - Ingreso manual de dados " << endl;
         cout << "4. Volver " << endl << endl;
         cout << "Ingrese la opción deseada: ";
-        cin >> opc;
+        opc = validarIngreso(opc, 1, 4);
         system("cls");
         switch(opc){
             case 1:
@@ -37,8 +37,6 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
                 break;
             case 4: menu = true;
                 break;
-            default: cout << "Por favor ingrese una opción válida (1-4)" << endl << endl;
-                     system("pause");
         }
 
     }
@@ -62,7 +60,7 @@ void subMenuReglamento(){
         cout << "2. Combinaciones ganadoras " << endl;
         cout << "3. Volver " << endl << endl;
         cout << "Ingrese la opción deseada: ";
-        cin >> opc;
+        opc = validarIngreso(opc, 1, 3);
         system("cls");
         switch(opc){
             case 1: reglas();
@@ -71,8 +69,6 @@ void subMenuReglamento(){
                 break;
             case 3: menu = true;
                 break;
-            default: cout << "Ingrese una opción válida (1-3)";
-                     system("pause");
         }
     }
 }
@@ -182,7 +178,7 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                 }
                 if(conf=='S' || conf == 's'){
                     cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-                    cin >> cantDados;
+                    cantDados = validarIngreso(cantDados, 1, 5);
                     switch(cantDados){
                         case 1: cambiarDados(vec, 1);
                                 puntosRonda = calcularPuntaje(vec, tam);
@@ -199,8 +195,6 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
                         case 5: cargarDados(vec, tam);
                                 puntosRonda = calcularPuntaje(vec, tam);
                             break;
-                        default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                                system("pause");
                         }
                     }else{
                         puntosRonda = calcularPuntaje(vec, tam);
@@ -242,7 +236,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
 
         /// Comienza ciclo del primer jugador
         while(lanzamiento>0){
-            if(puntosRonda==50){
+            if(lanzamiento == 2 && puntosRonda==50){
                 lanzamiento = -1;
                 generalaServida = false;
                 puntajeTotalUno += 1000;
@@ -261,7 +255,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
                 }
                 if(conf=='S' || conf == 's'){
                     cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-                    cin >> cantDados;
+                    cantDados = validarIngreso(cantDados, 1 ,5);
                     switch(cantDados){
                         case 1: cambiarDados(vec, 1);
                                 puntosRonda = calcularPuntaje(vec, tam);
@@ -278,8 +272,6 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
                         case 5: cargarDados(vec, tam);
                                 puntosRonda = calcularPuntaje(vec, tam);
                             break;
-                        default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                                system("pause");
                         }
                     }else{
                         puntosRonda = calcularPuntaje(vec, tam);
@@ -290,15 +282,16 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
                 }
 
             }
-            cargarDados(vec, tam);
             puntajeTotalUno+=puntosRonda;
+            cargarDados(vec, tam);
+            puntosRonda = calcularPuntaje(vec, tam);
             lanzamiento = 2;
             proximoTurno = true;
             entreTurnoDos(nombreUno, nombreDos, nRonda, puntajeTotalUno, puntajeTotalDos, proximoTurno);///MUESTRA NOMBRE, RONDA, PUNTOS ENTRE RONDAS
 
             /// Comienza ciclo del segudo jugador
             while(lanzamiento>0){
-            if(puntosRonda==50){
+            if(lanzamiento == 2 && puntosRonda==50){
                 lanzamiento = -1;
                 generalaServida = false;
                 puntajeTotalDos += 1000;
@@ -317,7 +310,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
                 }
                 if(conf=='S' || conf == 's'){
                     cout << endl << "¿CUANTOS DADOS VOLVES A TIRAR? (1-5): ";
-                    cin >> cantDados;
+                    cantDados = validarIngreso(cantDados, 1, 5);
                     switch(cantDados){
                         case 1: cambiarDados(vec, 1);
                                 puntosRonda = calcularPuntaje(vec, tam);
@@ -334,8 +327,6 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
                         case 5: cargarDados(vec, tam);
                                 puntosRonda = calcularPuntaje(vec, tam);
                             break;
-                        default: cout << endl << "¡Ingrese un numero valido del 1 al 5!" << endl << endl;
-                                system("pause");
                         }
                     }else{
                         puntosRonda = calcularPuntaje(vec, tam);
@@ -668,23 +659,22 @@ void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guarda
 
 /// ORDENAR PUNTAJES DE MAYOR A MENOR
 void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
+    int i,j, posmax;
     int limite, auxPuntos;
     string auxNombres;
     limite = ultimoJugador(guardarPuntajes);
-    for(int i=0;i<limite-1;i++){
-
-        for(int x=i+1;x<limite;x++){
-
-            if(guardarPuntajes[x]>guardarPuntajes[i]) {
-
-                auxPuntos = guardarPuntajes[i];
-                guardarPuntajes[i] = guardarPuntajes[x];
-                guardarPuntajes[x] = auxPuntos;
-                auxNombres = guardarNombres[i];
-                guardarNombres[i] = guardarPuntajes[x];
-                guardarNombres[x] = auxNombres;
-            }
+    for(i=0; i < limite-1; i++){
+        posmax=i;
+        for(j=i+1; j < limite; j++){
+            if(guardarPuntajes[j] > guardarPuntajes[posmax]) posmax=j;
         }
+        auxPuntos = guardarPuntajes[i];
+        guardarPuntajes[i] = guardarPuntajes[posmax];
+        guardarPuntajes[posmax] = auxPuntos;
+
+        auxNombres = guardarNombres[i];
+        guardarNombres[i] = guardarNombres[posmax];
+        guardarNombres[posmax] = auxNombres;
     }
 }
 
