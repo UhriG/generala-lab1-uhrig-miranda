@@ -31,7 +31,7 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
                 juegoMain(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
             case 2:
-                juegoMainDos(vec, tam, guardarNombres, guardarPuntajes);
+                juegoMainDos(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
             case 3: juegoManual(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
@@ -222,7 +222,7 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
     JUEGO DE DOS JUGADORES
 */
 ///MODO 2 JUGADORES
-void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
+void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
 
     int cantDados, nRonda=0, puntajeTotalUno=0, puntajeTotalDos=0, i, puntosRonda=0, lanzamiento;
     char conf='S', nombreUno[25], nombreDos[25];
@@ -349,7 +349,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
         if(nRonda==10){
             cartelGameoverDos(nombreUno, nombreDos, nRonda, puntajeTotalUno, puntajeTotalDos);///CARTEL GAME OVER DOS JUGADORES
         }
-        guardarDatosDos(puntajeTotalUno, puntajeTotalDos, nombreUno, nombreDos, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
+        guardarDatosDos(puntajeTotalUno, puntajeTotalDos, nRonda, nombreUno, nombreDos, guardarNombres, guardarPuntajes, guardarNumRonda); ///GUARDA LOS DATOS EN PUNTAJE
 }
 
 
@@ -680,7 +680,7 @@ void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[], int guardarN
         guardarNombres[i] = guardarNombres[posmax];
         guardarNombres[posmax] = auxNombres;
 
-        auxRonda = guardarNumRonda[posmax];
+        auxRonda = guardarNumRonda[i];
         guardarNumRonda[i] = guardarNumRonda [posmax];
         guardarNumRonda[posmax] = auxRonda;
     }
@@ -796,7 +796,7 @@ void cartelGenerala(char nombre [], int nRonda, int puntos){
         cout << "\t\t..######...########.##....##.########.##.....##.##.....##.########.##.....##" << endl << endl;
         cout << endl << endl;
     cout << "\t\t-----------------------------------------------------------------------------" << endl << endl;
-    cout << "\t\t\t\tGANADOR JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << endl << endl;
+    cout << "\t\t\tGANADOR JUGADOR: " << nombre << " | PUNTAJE TOTAL: " << puntos << " | RONDAS TOTALES: " << nRonda << endl << endl;
     cout << "\t\t-----------------------------------------------------------------------------" << endl << endl;
     system("pause");
 }
@@ -827,15 +827,17 @@ void cargarNombreDos(char nombreUno[], char nombreDos[]){
 }
 
 ///RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
-void guardarDatosDos(int puntosUno, int puntosDos, char nombreUno[], char nombreDos[], string guardarNombres[], int guardarPuntajes[]){
+void guardarDatosDos(int puntosUno, int puntosDos, int nRonda, char nombreUno[], char nombreDos[], string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
      int ultimoRegistro, ultimoRegistro2;
      ultimoRegistro = ultimoJugador(guardarPuntajes);
      guardarPuntajes[ultimoRegistro] = puntosUno;
      guardarNombres[ultimoRegistro] = string (nombreUno);
+     guardarNumRonda[ultimoRegistro] = nRonda;
 ///GUARDA EL 2DO JUGADOR
      ultimoRegistro2 = ultimoJugador(guardarPuntajes);
      guardarPuntajes[ultimoRegistro2] = puntosDos;
      guardarNombres[ultimoRegistro2] = string (nombreDos);
+     guardarNumRonda[ultimoRegistro2] = nRonda;
 }
 ///CARTEL ENTRE TURNOS DOS
 void entreTurnoDos(char nombreUno[],char nombreDos[], int nRonda, int puntosUno, int puntosDos, bool proximoTurno){

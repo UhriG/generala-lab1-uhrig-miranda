@@ -30,8 +30,8 @@ void mostrarVector(int [], string [], int []); ///MUESTRA LO QUE CONTIENE LAS PO
 void copiarVector(int [], int, int[]); ///COPIA EN OTRO VECTOR EL CONTENIDO DEL VECTOR 1 EN EL VECTOR 2
 void ordenarDados(int [], int); ///ORDENAR EL VECTOR DE DADOS DE MENOR A MAYOR.
 void mostrarPuntosParciales(int [], int); ///MUESTRA LOS PUNTOS ACTUALES AL TIRAR LOS DADOS
-void juegoMainDos(int [], int, string[], int[]); ///MODO 2 JUGADORES
-void guardarDatosDos(int, int, char [], char [], string [], int []); ///RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
+void juegoMainDos(int [], int, string[], int[], int []); ///MODO 2 JUGADORES
+void guardarDatosDos(int, int, int, char [], char [], string [], int [], int []); ///RECIBE AMBOS NOMBRES Y PUNTOS DE LOS JUGADORES Y LOS GUARDA EN PUNTAJES
 void cargarNombreDos(char [], char []); ///CARGA 2 NOMBRES
 void cargarDadosManual(int [], int); ///INGRESAR LOS DADOS MANUALMENTE
 void tirarDadosManual(int [], int, int, int); ///TIRA LOS DADOS MANUALMENTE
