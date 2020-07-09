@@ -18,7 +18,9 @@ int main()
     char sn;
     string guardarNombres[30];
     int guardarPuntajes[30];
+    int guardarNumRonda[30];
     ponerCero(guardarPuntajes, 30);
+    ponerCero(guardarNumRonda, 30);
 
     while(true){
         system("cls");
@@ -38,9 +40,9 @@ int main()
         opc = validarIngreso(opc, 1, 4);
         system("cls");
         switch(opc){
-            case 1: subMenuJugar(vec, tam, guardarNombres, guardarPuntajes);
+            case 1: subMenuJugar(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
-            case 2: subMenuPuntaje(guardarNombres, guardarPuntajes);
+            case 2: subMenuPuntaje(guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
             case 3: subMenuReglamento();
                 break;

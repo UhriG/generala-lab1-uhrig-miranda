@@ -12,7 +12,7 @@ using namespace std;
 */
 
 ///MENU JUGAR
-void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntajes[]){
+void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
     bool menu = false;
     int opc;
     system("cls");
@@ -28,12 +28,12 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
         system("cls");
         switch(opc){
             case 1:
-                juegoMain(vec, tam, guardarNombres, guardarPuntajes);
+                juegoMain(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
             case 2:
                 juegoMainDos(vec, tam, guardarNombres, guardarPuntajes);
                 break;
-            case 3: juegoManual(vec, tam, guardarNombres, guardarPuntajes);
+            case 3: juegoManual(vec, tam, guardarNombres, guardarPuntajes, guardarNumRonda);
                 break;
             case 4: menu = true;
                 break;
@@ -43,10 +43,10 @@ void subMenuJugar(int vec[], int tam, string guardarNombres[], int guardarPuntaj
 }
 
 ///MENU PUNTAJE
-void subMenuPuntaje(string guardarNombres[], int guardarPuntajes[]){
+void subMenuPuntaje(string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
     cartelPuntaje();
-    ordenarPuntaje(guardarPuntajes, guardarNombres);
-    mostrarVector(guardarPuntajes, guardarNombres);
+    ordenarPuntaje(guardarPuntajes, guardarNombres, guardarNumRonda);
+    mostrarVector(guardarPuntajes, guardarNombres, guardarNumRonda);
 }
 ///MENU REGLAMENTO
 void subMenuReglamento(){
@@ -147,7 +147,7 @@ void combinacionesGanadoras(){
     JUEGO DE UN JUGADOR
 */
 ///MODO 1 JUGADOR
-void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
+void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
 
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf='S', nombre[25];
@@ -215,7 +215,7 @@ void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]
             cartelGameover(nombre, nRonda, puntajeTotal);
         }
 
-        guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
+        guardarDatos(puntajeTotal, nombre, nRonda, guardarNombres, guardarPuntajes, guardarNumRonda); ///GUARDA LOS DATOS EN PUNTAJE
 }
 
 /**
@@ -357,7 +357,7 @@ void juegoMainDos(int vec[],int tam, string guardarNombres[], int guardarPuntaje
     JUEGO CON DADOS MANUALES
 */
 ///MODO JUGAR DEMOSTRACION INGRESO MANUAL DE DADOS
-void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes[]){
+void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
     ponerCero(vec, tam);
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
     char conf, nombre[25];
@@ -428,7 +428,7 @@ void juegoManual(int vec[],int tam, string guardarNombres[], int guardarPuntajes
         if(nRonda==10){
             cartelGameover(nombre, nRonda, puntajeTotal);
         }
-        guardarDatos(puntajeTotal, nombre, guardarNombres, guardarPuntajes); ///GUARDA LOS DATOS EN PUNTAJE
+        guardarDatos(puntajeTotal, nombre, nRonda, guardarNombres, guardarPuntajes, guardarNumRonda); ///GUARDA LOS DATOS EN PUNTAJE
 }
 ///CARGA DADOS
 void cargarDados(int vec[],int tam){
@@ -653,17 +653,18 @@ int ultimoJugador(int puntos[]){
 }
 
 ///RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
-void guardarDatos(int puntos, char nombre[], string guardarNombres[], int guardarPuntajes[]){
+void guardarDatos(int puntos, char nombre[], int nRonda, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
      int ultimoRegistro;
      ultimoRegistro = ultimoJugador(guardarPuntajes);
      guardarPuntajes[ultimoRegistro] = puntos;
      guardarNombres[ultimoRegistro] = string (nombre);
+     guardarNumRonda[ultimoRegistro] = nRonda;
 }
 
 ///ORDENAR PUNTAJES MAYOR A MENOR
-void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
+void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[], int guardarNumRonda[]){
     int i,j, posmax;
-    int limite, auxPuntos;
+    int limite, auxPuntos, auxRonda;
     string auxNombres;
     limite = ultimoJugador(guardarPuntajes);
     for(i=0; i < limite-1; i++){
@@ -678,18 +679,22 @@ void ordenarPuntaje(int guardarPuntajes[], string guardarNombres[]){
         auxNombres = guardarNombres[i];
         guardarNombres[i] = guardarNombres[posmax];
         guardarNombres[posmax] = auxNombres;
+
+        auxRonda = guardarNumRonda[posmax];
+        guardarNumRonda[i] = guardarNumRonda [posmax];
+        guardarNumRonda[posmax] = auxRonda;
     }
 }
 
 ///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
-void mostrarVector(int guardarPuntajes[], string guardarNombres[]){
+void mostrarVector(int guardarPuntajes[], string guardarNombres[], int guardarNumRonda[]){
 
     int i, tam=10;
     void cartelPuntaje();
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     for(i=0;i<tam;i++){
 
-    cout << "\t\t\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << endl << endl;
+    cout << "\t\t\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << " | RONDAS: " << guardarNumRonda[i]<< endl << endl;
 
     }
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;

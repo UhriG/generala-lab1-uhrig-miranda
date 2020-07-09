@@ -4,8 +4,8 @@
 /**
     DECLARACION DE FUNCIONES MENÚ
 */
-void subMenuJugar(int [], int, string[], int[]); ///MENU JUGAR
-void subMenuPuntaje(string[], int[]); ///MENU PUNTAJE
+void subMenuJugar(int [], int, string[], int[], int []); ///MENU JUGAR
+void subMenuPuntaje(string[], int[], int []); ///MENU PUNTAJE
 void subMenuReglamento(); ///MENU REGLAMENTO
 void reglas(); ///MUESTRA REGLAS
 void combinacionesGanadoras(); ///MUESTRA COMBINACIONES GANADORAS
@@ -14,8 +14,8 @@ void combinacionesGanadoras(); ///MUESTRA COMBINACIONES GANADORAS
     DECLARACION DE FUNCIONES DEL JUEGO
 */
 void cargarDados(int [], int); ///CARGA DADOS
-void juegoMain(int [], int, string[], int[]); ///MODO 1 JUGADOR
-void juegoManual(int [], int, string[], int[]); ///MODO JUGAR DEMOSTRACION INGRESO MANUAL DE DADOS
+void juegoMain(int [], int, string[], int[], int []); ///MODO 1 JUGADOR
+void juegoManual(int [], int, string[], int[], int[]); ///MODO JUGAR DEMOSTRACION INGRESO MANUAL DE DADOS
 void mostrarDados(int [], int); ///MUESTRA LOS VALORES DE LOS DADOS
 void tirarDados(int [], int, int); ///TIRA DADOS DE FORMA RANDOM
 void cambiarDados(int [], int); ///CAMBIAR DADOS SEGUN ELECCION
@@ -24,9 +24,9 @@ int calcularPuntaje(int [], int); ///CALCULA QUE TIPO DE PUNTAJE CORRESPONDE POR
 void cargarNombre(char []); ///CARGA NOMBRE DE 1 JUGADOR
 void ponerCero(int [], int); ///PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR guardarPuntajes
 int ultimoJugador(int []); ///BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO DEVUELVE
-void guardarDatos(int, char [], string [], int []); ///RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
-void ordenarPuntaje(int [], string []);///ORDENAR PUNTAJES MAYOR A MENOR
-void mostrarVector(int [], string []); ///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+void guardarDatos(int, char [], int, string [], int [], int []); ///RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
+void ordenarPuntaje(int [], string [], int []);///ORDENAR PUNTAJES MAYOR A MENOR
+void mostrarVector(int [], string [], int []); ///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void copiarVector(int [], int, int[]); ///COPIA EN OTRO VECTOR EL CONTENIDO DEL VECTOR 1 EN EL VECTOR 2
 void ordenarDados(int [], int); ///ORDENAR EL VECTOR DE DADOS DE MENOR A MAYOR.
 void mostrarPuntosParciales(int [], int); ///MUESTRA LOS PUNTOS ACTUALES AL TIRAR LOS DADOS
