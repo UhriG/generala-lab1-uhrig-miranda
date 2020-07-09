@@ -629,6 +629,21 @@ void cargarNombre(char nombre[]){
     cout << endl << endl;
     cout<<"Ingrese su nombre para registrarse: ";
     cin.getline(nombre,25);
+    /// UN WHILE PARA COMPROBAR QUE NO HAYAN INGRESADO UN NOMBRE VACIO O AL MENOS EL PRIMER CARACTER
+    while(nombre[0]=='\0'){
+        system("cls");
+        cout << endl << endl;
+        cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######." << endl;
+        cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##" << endl;
+        cout << "\t\t.##.....##..##..##.......####..##.##.....##.##.......####..##..##..##.....##.##.....##" << endl;
+        cout << "\t\t.########...##..######...##.##.##.##.....##.######...##.##.##..##..##.....##.##.....##" << endl;
+        cout << "\t\t.##.....##..##..##.......##..####..##...##..##.......##..####..##..##.....##.##.....##" << endl;
+        cout << "\t\t.##.....##..##..##.......##...###...##.##...##.......##...###..##..##.....##.##.....##" << endl;
+        cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######." << endl << endl;
+        cout << endl << endl;
+        cout<<"Ingrese su nombre para registrarse: ";
+        cin.getline(nombre,25);
+    }
     cout<< endl;
     cout << nombre<<" listo para continuar?"<< endl << endl;
     system("pause");
@@ -818,9 +833,38 @@ void cargarNombreDos(char nombreUno[], char nombreDos[]){
     cout << endl << endl;
     cout<<"1er Jugador ingrese su nombre para registrarse: ";
     cin.getline(nombreUno,25);
+    /// UN WHILE PARA COMPROBAR QUE NO HAYAN INGRESADO UN NOMBRE VACIO
+    while(nombreUno[0]=='\0'){
+        system("cls");
+        cout << endl << endl;
+        cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######...######." << endl;
+        cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##.##....##" << endl;
+        cout << "\t\t.##.....##..##..##.......####..##.##.....##.##.......####..##..##..##.....##.##.....##.##......" << endl;
+        cout << "\t\t.########...##..######...##.##.##.##.....##.######...##.##.##..##..##.....##.##.....##..######." << endl;
+        cout << "\t\t.##.....##..##..##.......##..####..##...##..##.......##..####..##..##.....##.##.....##.......##" << endl;
+        cout << "\t\t.##.....##..##..##.......##...###...##.##...##.......##...###..##..##.....##.##.....##.##....##" << endl;
+        cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######...######." << endl << endl;
+        cout << endl << endl;
+        cout<<"1er Jugador ingrese su nombre para registrarse: ";
+        cin.getline(nombreUno,25);
+    }
     cout<< endl;
     cout<<"2do Jugador ingrese su nombre para registrarse: ";
     cin.getline(nombreDos,25);
+    while(nombreDos[0]=='\0'){
+        system("cls");
+        cout << endl << endl;
+        cout << "\t\t.########..####.########.##....##.##.....##.########.##....##.####.########...#######...######." << endl;
+        cout << "\t\t.##.....##..##..##.......###...##.##.....##.##.......###...##..##..##.....##.##.....##.##....##" << endl;
+        cout << "\t\t.##.....##..##..##.......####..##.##.....##.##.......####..##..##..##.....##.##.....##.##......" << endl;
+        cout << "\t\t.########...##..######...##.##.##.##.....##.######...##.##.##..##..##.....##.##.....##..######." << endl;
+        cout << "\t\t.##.....##..##..##.......##..####..##...##..##.......##..####..##..##.....##.##.....##.......##" << endl;
+        cout << "\t\t.##.....##..##..##.......##...###...##.##...##.......##...###..##..##.....##.##.....##.##....##" << endl;
+        cout << "\t\t.########..####.########.##....##....###....########.##....##.####.########...#######...######." << endl << endl;
+        cout << endl << endl;
+        cout<<"2do Jugador ingrese su nombre para registrarse: ";
+        cin.getline(nombreDos,25);
+    }
     cout<< endl;
     cout << nombreUno<<" y "<< nombreDos<<" listos para continuar?"<< endl << endl;
     system("pause");
