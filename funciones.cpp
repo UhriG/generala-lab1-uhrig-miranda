@@ -150,7 +150,7 @@ void combinacionesGanadoras(){
 void juegoMain(int vec[],int tam, string guardarNombres[], int guardarPuntajes[], int guardarNumRonda[]){
 
     int cantDados, nRonda=0, puntajeTotal=0, i, puntosRonda=0, lanzamiento;
-    char conf='S', nombre[25];
+    char conf, nombre[25];
     bool generalaServida = true, mostrarEntreTurno = true;
     cargarNombre(nombre); /// CARGA EL NOMBRE
 
@@ -465,6 +465,9 @@ void cargarDadosManual(int vec[], int tam){
 ///MUESTRA LOS VALORES DE LOS DADOS
 void mostrarDados(int vec[], int tam){
     int i;
+    cout << "Posición: \t1\t2\t3\t4\t5" << endl;
+    cout << "----------------------------------------------------" << endl;
+    cout << "Valor dado: ";
     for(i=0;i<tam; i++){
         cout << "\t" << vec[i];
     }
@@ -707,11 +710,17 @@ void mostrarVector(int guardarPuntajes[], string guardarNombres[], int guardarNu
     int i, tam=10;
     void cartelPuntaje();
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
-    for(i=0;i<tam;i++){
+    if(guardarPuntajes[i]!=0){
+        for(i=0;i<tam;i++){
+            if(guardarPuntajes[i]!=0){
+               cout << "\t\t\t"<< i+1 << " - JUGADOR: " << guardarNombres[i] << "\t| PUNTAJE: " << guardarPuntajes[i] << "\t| RONDAS: " << guardarNumRonda[i]<< endl << endl;
+            }
+        }
 
-    cout << "\t\t\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << " | RONDAS: " << guardarNumRonda[i]<< endl << endl;
-
+    }else{
+        cout << "\t\t\tAun no hay puntajes guardados, se el primero!" << endl << endl ;
     }
+
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
     system("pause");
