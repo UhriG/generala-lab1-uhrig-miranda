@@ -709,7 +709,7 @@ void mostrarVector(int guardarPuntajes[], string guardarNombres[], int guardarNu
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
     for(i=0;i<tam;i++){
 
-    cout << "\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << " | RONDAS: " << guardarNumRonda[i]<< endl << endl;
+    cout << "\t\t\t\t\t"<< i+1 << " - JUGADOR " << guardarNombres[i] << " | PUNTAJE: " << guardarPuntajes[i] << " | RONDAS: " << guardarNumRonda[i]<< endl << endl;
 
     }
     cout << "\t\t----------------------------------------------------------------------------" << endl << endl;
