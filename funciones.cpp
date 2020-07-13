@@ -1,9 +1,6 @@
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
-#include <locale.h>
-#include <windows.h>
+#include <stdlib.h> /// para la funcion RAND
+#include <time.h> /// para la funcion TIME
 using namespace std;
 #include "funciones.h"
 

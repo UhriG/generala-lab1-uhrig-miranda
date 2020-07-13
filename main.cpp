@@ -1,8 +1,6 @@
 #include <iostream>
-#include <windows.h>
-#include <stdio.h>
-#include <wchar.h>
-#include <locale.h>
+#include <windows.h>/// para las funciones system... pause, cls..
+#include <locale.h>/// para el setlocale(LC_ALL)
 
 using namespace std;
 
