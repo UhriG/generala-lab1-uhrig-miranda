@@ -26,7 +26,7 @@ void ponerCero(int [], int); ///PONE EN 0 (CERO) TODAS LAS POSICIONES DEL VECTOR
 int ultimoJugador(int []); ///BUSCA LA POSICION DEL VECTOR EN 0 (VACIO) Y LO DEVUELVE
 void guardarDatos(int, char [], int, string [], int [], int []); ///RECIBE EL NOMBRE Y PUNTOS DEL JUGADOR Y LOS GUARDA EN PUNTAJES
 void ordenarPuntaje(int [], string [], int []);///ORDENAR PUNTAJES MAYOR A MENOR
-void mostrarVector(int [], string [], int []); ///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
+void mostrarPuntaje(int [], string [], int []); ///MUESTRA LO QUE CONTIENE LAS POSICIONES DEL VECTOR (PUNTAJES)
 void copiarVector(int [], int, int[]); ///COPIA EN OTRO VECTOR EL CONTENIDO DEL VECTOR 1 EN EL VECTOR 2
 void ordenarDados(int [], int); ///ORDENAR EL VECTOR DE DADOS DE MENOR A MAYOR.
 void mostrarPuntosParciales(int [], int); ///MUESTRA LOS PUNTOS ACTUALES AL TIRAR LOS DADOS

@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "Spanish");
     system("color 0a");
     const int tam = 5;
     int vec[tam];
